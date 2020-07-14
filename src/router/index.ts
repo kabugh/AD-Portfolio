@@ -8,19 +8,19 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/about-me",
     name: "AboutMe",
     component: () =>
-      import(/* webpackChunkName: "aboutMe" */ "../views/AboutMe.vue")
+      import(/* webpackChunkName: "aboutMe" */ "../views/AboutMe.vue"),
   },
   {
     path: "/stories",
     name: "Stories",
     component: () =>
-      import(/* webpackChunkName: "stories" */ "../views/Stories.vue")
+      import(/* webpackChunkName: "stories" */ "../views/Stories.vue"),
   },
   // {
   //   path: "/stories/:id",

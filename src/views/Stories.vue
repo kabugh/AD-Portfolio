@@ -6,48 +6,55 @@
       description="When, while the lovely valley teems with vapour around me, and
     the meridian sun strikes the upper surface of the impenetrable foliage of my
     trees."
+      image="bg.jpg"
     />
-    <section class="stories__container">
+    <!-- <section class="stories__container">
       <div class="story" v-for="(story, i) in stories" :key="i">
         <img
           class="story__image"
-          :src="require(`@/assets/images/${story.image}`)"
+          :src="require(`@/assets/images/${story.photo}`)"
           alt="story image"
         />
         <h1>{{ story.title }}</h1>
         <p>
-          {{ story.shortDescription }}
+          {{ story.description }}
         </p>
         <button type="button" class="dark">Czytaj dalej</button>
       </div>
-    </section>
+    </section> -->
+    <PhotoGallery :images="stories" :forInstagram="false" />
   </section>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+
 import HeroPage from "@/components/HeroPage.vue";
+import PhotoGallery from "@/components/PhotoGallery.vue";
 
 @Component({
-  components: { HeroPage }
+  components: { HeroPage, PhotoGallery }
 })
 export default class Stories extends Vue {
   stories = [
     {
-      title: "Wild Question Marks",
-      image: "animal.jpg",
-      shortDescription:
+      name: "Wild Question Marks",
+      url:
+        "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
     },
     {
-      title: "Wild Question Marks",
-      image: "animal.jpg",
-      shortDescription:
+      name: "Wild Question Marks",
+      url:
+        "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
     },
     {
-      title: "Wild Question Marks",
-      image: "animal.jpg",
-      shortDescription:
+      name: "Wild Question Marks",
+      url:
+        "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
     }
   ];

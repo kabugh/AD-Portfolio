@@ -1,5 +1,10 @@
 <template>
-  <header class="hero">
+  <header
+    class="hero"
+    :style="{
+      backgroundImage: 'url(' + require(`@/assets/images/${this.image}`) + ')'
+    }"
+  >
     <div class="hero__container">
       <h1 data-aos="fade-up">{{ this.title }}</h1>
       <h2 class="highlighted" data-aos="fade-up" data-aos-delay="200">
@@ -15,11 +20,11 @@
 import { Vue, Component } from "vue-property-decorator";
 
 @Component({
-  props: ["title", "subTitle", "description"]
+  props: ["title", "subTitle", "description", "image"]
 })
 export default class HeroPage extends Vue {}
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/global.scss";
 .hero {
   width: 100%;

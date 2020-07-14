@@ -6,6 +6,7 @@
       description="When, while the lovely valley teems with vapour around me, and
     the meridian sun strikes the upper surface of the impenetrable foliage of my
     trees."
+      image="bg.jpg"
     />
     <section
       v-for="(desc, index) in descs"
@@ -74,7 +75,7 @@ export default class AboutMe extends Vue {
   descs = [
     {
       image: "animal.jpg",
-      title: "Visual Art",
+      title: "About me",
       subtitle:
         "Creative Photography Theme with Easy to Built Responsive Features",
       paragraph:
