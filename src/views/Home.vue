@@ -24,6 +24,7 @@
             v-for="(item, index) in offerItems"
             :key="index"
             :class="orientationClass(item)"
+            @click="pushItem(item)"
           >
             <div class="image__wrapper">
               <img
@@ -52,6 +53,7 @@
 import { Component, Vue } from "vue-property-decorator";
 
 import VueDisplacementSlideshow from "vue-displacement-slideshow";
+import { convertToSlug } from "@/utils/slugify";
 @Component({
   components: {
     VueDisplacementSlideshow
@@ -63,6 +65,14 @@ export default class Home extends Vue {
       horizontal: item.orientation === "horizontal",
       vertical: item.orientation === "vertical"
     };
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  pushItem(item: any) {
+    this.$router.push({
+      name: "Service",
+      params: { name: convertToSlug(item.title), service: item }
+    });
   }
   img = [
     require("@/assets/images/slideshow/1.jpg"),
@@ -132,12 +142,12 @@ export default class Home extends Vue {
 </script>
 <style lang="scss">
 @import "@/assets/scss/global.scss";
-
 .home {
   width: 100%;
   .hero {
     width: 100%;
     height: 100vh;
+    background-color: black;
   }
   .offer {
     width: 100%;
@@ -185,13 +195,6 @@ export default class Home extends Vue {
             padding: $verticalPadding / 2 0;
             text-align: center;
           }
-          .title__line {
-            border: none;
-            height: 4px;
-            width: 30px;
-            background-color: black;
-            margin: 0;
-          }
           .image__description_layer,
           .description__container {
             display: none;
@@ -230,14 +233,6 @@ export default class Home extends Vue {
   }
   @media (min-width: 1024px) and (min-height: 500px) {
     .offer .offer__container {
-      .title__container {
-        h1 {
-          font-size: 4.5rem;
-        }
-        h2 {
-          font-size: 1.75rem;
-        }
-      }
       .offer__items {
         grid-auto-rows: fit-content($verticalPadding);
         row-gap: $verticalPadding * 2;
@@ -297,7 +292,7 @@ export default class Home extends Vue {
           color: #fff;
           visibility: hidden;
           @include flex;
-          transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+          transition: all 1s cubic-bezier(0.65, 0, 0.35, 1);
           height: 0; // bad practice should be translateY
         }
         &:hover .image__description_layer {
@@ -317,8 +312,8 @@ export default class Home extends Vue {
           padding: 4vh;
           text-align: center;
           h1 {
-            font-size: 1.25rem;
-            text-transform: capitalize;
+            font-size: 1.75rem;
+            text-transform: uppercase;
             margin-bottom: 2vh;
             display: block;
           }

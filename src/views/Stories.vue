@@ -22,7 +22,11 @@
         <button type="button" class="dark">Czytaj dalej</button>
       </div>
     </section> -->
-    <PhotoGallery :images="stories" :forInstagram="false" />
+    <PhotoGallery
+      :images="stories"
+      :forInstagram="false"
+      :zoomedPhotos="false"
+    />
   </section>
 </template>
 <script lang="ts">
@@ -44,14 +48,14 @@ export default class Stories extends Vue {
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
     },
     {
-      name: "Wild Question Marks",
+      name: "Test",
       url:
         "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
     },
     {
-      name: "Wild Question Marks",
+      name: "Story",
       url:
         "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       description:

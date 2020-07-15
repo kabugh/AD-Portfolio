@@ -1,0 +1,178 @@
+<template>
+  <section class="service">
+    <div class="service__container">
+      <div class="image__container">
+        <div
+          :style="{
+            backgroundImage:
+              'url(' + require(`@/assets/images/${service.image}`) + ')'
+          }"
+          :alt="service.title"
+          class="image unselectable"
+          ref="image"
+        ></div>
+        <div class="overlay" ref="overlay"></div>
+      </div>
+      <article class="service__article">
+        <h1 ref="title">{{ service.title }}</h1>
+        <div class="article__content" ref="content">
+          <p>
+            Uwielbiam fotografować kochających się ludzi, można powiedzieć, że
+            jestem „zakochana w miłości”. Często potrafię się wzruszyć na ślubie
+            moich klientów, na szczęście za aparatem nikt tego nie widzi.
+          </p>
+          <h2>Co charakteryzuje moją pracę:</h2>
+          <ul>
+            <li v-for="(item, i) in article" :key="i">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</template>
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+import { TimelineLite } from "gsap";
+
+@Component({
+  props: ["service"]
+})
+export default class Service extends Vue {
+  mounted() {
+    const image = this.$refs.image;
+    const overlay = this.$refs.overlay;
+    const title = this.$refs.title;
+    const content = this.$refs.content;
+
+    const timeline1 = new TimelineLite();
+    const timeline2 = new TimelineLite();
+
+    timeline1.from(overlay, {
+      duration: 1.5,
+      opacity: 0,
+      ease: "power4",
+      y: -100
+    });
+    timeline2
+      .from(image, {
+        duration: 2.5,
+        delay: 1,
+        opacity: 0,
+        ease: "power4",
+        y: -100
+      })
+      .to(image, { y: 0 });
+    timeline1
+      .from(title, { duration: 1.5, opacity: 0, y: -20, ease: "power4" })
+      .to(title, { y: 0 });
+    timeline2
+      .from(content, { duration: 1, opacity: 0, y: -20, ease: "power4" })
+      .to(content, { y: 0 });
+  }
+  article = [
+    "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
+    "Nie fotografuję tylko kluczowych momentów, szukam detali, ciekawych sytuacji, gestów, spojrzeń, wszystkiego, co składa się na klimat tego wyjątkowego dnia.",
+    "Potrafię sfotografować Was tak, abyście nie czuli się „ustawieni”. Na sesji plenerowej macie przede wszystkim świetnie się bawić, a ja zajmę się chwytaniem Waszych najlepszych momentów.",
+    "Moje zdjęcia mają specyficzny styl. Lubię minimalizm, detale, delikatne kolory, światłocienie, niedopowiedzenia. Warto zajrzeć do mojego portfolio lub na facebooka, by przekonać się, czy i Wam ten styl odpowiada",
+    "Wszyscy lubią gratisy! U mnie dostaniecie darmową sesję narzeczeńską, pendrive’a z albumem lub drewnianym pudełkiem na odbitki."
+  ];
+}
+</script>
+<style lang="scss" scoped>
+@import "@/assets/scss/global.scss";
+.service {
+  width: 100%;
+  .service__container {
+    color: black;
+    @include flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 3/2 * $verticalPadding $horizontalPadding / 2;
+    .image__container {
+      max-width: 100%;
+      max-height: 60vh;
+      width: 100%;
+      height: 60vh;
+      position: relative;
+      .image {
+        width: 100%;
+        height: 100%;
+        @include backgroundDefault;
+      }
+      .overlay {
+        display: none;
+      }
+    }
+    .service__article {
+      padding: $verticalPadding 0;
+      @include flex;
+      flex-direction: column;
+      h1,
+      h2 {
+        margin: $verticalPadding / 2 0;
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      p {
+        margin: $verticalPadding / 2 0;
+        text-align: left;
+      }
+      ul {
+        margin: $verticalPadding / 4 0;
+        display: grid;
+        row-gap: $verticalPadding;
+      }
+    }
+  }
+  @media (min-width: 768px) and (min-height: 500px) {
+    .service__container {
+      padding: 3 / 2 * $verticalPadding $horizontalPadding * 3 / 2;
+      .image__container {
+        .overlay {
+          position: absolute;
+          display: block;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          transform: translate(5%, -5%);
+          background-color: black;
+          z-index: -1;
+        }
+      }
+      .service__article {
+        h1 {
+          font-size: 2rem;
+          margin: $verticalPadding / 4 0;
+        }
+      }
+    }
+  }
+  @media (min-width: 1024px) and (min-height: 500px) {
+    .service__container {
+      padding: 3 / 2 * $verticalPadding $horizontalPadding * 2;
+      .service__article {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  @media (min-width: 1450px) and (min-height: 500px) {
+    .service__container {
+      .service__article {
+        padding: $verticalPadding / 2 0;
+      }
+    }
+  }
+}
+</style>

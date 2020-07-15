@@ -11,30 +11,44 @@ const routes: Array<RouteConfig> = [
     component: Home,
   },
   {
-    path: "/about-me",
+    path: "/usługi/:name",
+    name: "Service",
+    component: () =>
+      import(/* webpackChunkName: "service" */ "../views/Service.vue"),
+    props: true
+  },
+  {
+    path: "/o-mnie",
     name: "AboutMe",
     component: () =>
       import(/* webpackChunkName: "aboutMe" */ "../views/AboutMe.vue"),
   },
   {
-    path: "/stories",
+    path: "/historie",
     name: "Stories",
     component: () =>
       import(/* webpackChunkName: "stories" */ "../views/Stories.vue"),
   },
-  // {
-  //   path: "/stories/:id",
-  //   name: "Story",
-  //   component: () =>
-  //     import(/* webpackChunkName: "story" */ "../views/Story.vue"),
-  //   props: true
-  // }
+  {
+    path: "/historie/:name",
+    name: "Story",
+    component: () =>
+      import(/* webpackChunkName: "story" */ "../views/Story.vue"),
+    props: true
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 });
 
 export default router;

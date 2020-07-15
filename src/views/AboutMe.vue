@@ -209,7 +209,7 @@ export default class AboutMe extends Vue {
   }
   @media (min-width: 768px) and (min-height: 500px) {
     .description__section {
-      min-height: 40vh;
+      min-height: 50vh;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr;
       .description__container .description__wrapper {
