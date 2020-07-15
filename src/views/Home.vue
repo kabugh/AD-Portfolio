@@ -1,5 +1,6 @@
 <template>
   <section class="home">
+    <StaticNavbar />
     <header class="hero" @click="$refs.slideshow.next()">
       <vue-displacement-slideshow
         :images="img"
@@ -15,7 +16,7 @@
     <section class="offer">
       <div class="offer__container">
         <div class="title__container">
-          <h1>Oferta.</h1>
+          <h1>Oferta</h1>
           <h2>Something cool to say here</h2>
         </div>
         <ul class="offer__items">
@@ -46,16 +47,20 @@
         </ul>
       </div>
     </section>
+    <Contact />
   </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import StaticNavbar from "@/components/StaticNavbar.vue";
+import Contact from "@/components/Contact.vue";
 import VueDisplacementSlideshow from "vue-displacement-slideshow";
 import { convertToSlug } from "@/utils/slugify";
 @Component({
   components: {
+    StaticNavbar,
+    Contact,
     VueDisplacementSlideshow
   }
 })
@@ -167,6 +172,7 @@ export default class Home extends Vue {
         h2 {
           font-size: 1.25rem;
           margin: 0.5vh;
+          color: $secondaryColor;
         }
       }
       .offer__items {
@@ -201,6 +207,12 @@ export default class Home extends Vue {
           }
         }
       }
+    }
+  }
+  @media (min-width: 450px) and (min-height: 500px) {
+    .offer .offer__container .offer__items .offer__item.vertical {
+      max-width: 60%;
+      margin: 0 auto;
     }
   }
   @media (min-width: 768px) and (min-height: 500px) {
