@@ -2,7 +2,8 @@
   <nav>
     <div class="nav__container">
       <div class="logo__container">
-        <div class="logo"></div>
+        <!-- <div class="logo"></div> -->
+        <h1>Alicja Dębek</h1>
       </div>
       <ul class="nav__items">
         <li
@@ -33,15 +34,15 @@ export default class TheNavbar extends Vue {
     },
     {
       title: "historie",
-      link: "/stories"
+      link: "/historie"
     },
     {
       title: "o mnie",
-      link: "/about-me"
+      link: "/o-mnie"
     },
     {
       title: "kontakt",
-      link: "/contact"
+      link: "/kontakt"
     }
   ];
 
@@ -73,11 +74,28 @@ nav {
 
   .nav__container {
     width: 100%;
-    padding: 15px 6vw;
+    height: 100%;
+    padding: $verticalPadding 6vw;
+    display: grid;
+    column-gap: 4vw;
+    align-items: center;
+    grid-template-columns: auto auto;
     .logo__container {
+      min-width: 10vw;
+      max-width: 20vw;
+      height: 80%;
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
       .logo {
         width: 100%;
         height: 100%;
+        @include backgroundDefault;
+        background-size: contain;
+        background-image: url("../assets/images/logo.png");
       }
     }
     .nav__items {

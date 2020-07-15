@@ -2,13 +2,14 @@
   <nav>
     <div class="nav__container">
       <div class="logo__container">
-        <div class="logo"></div>
+        <!-- <div class="logo"></div> -->
+        <h1>Alicja Dębek</h1>
       </div>
       <ul class="nav__items">
         <li
           @click="$router.push(item.link)"
           class="item"
-          v-for="(item, i) in filteredNavItems"
+          v-for="(item, i) in navItems"
           :key="i"
         >
           {{ item.title }}
@@ -33,15 +34,15 @@ export default class StaticNavbar extends Vue {
     },
     {
       title: "historie",
-      link: "/stories"
+      link: "/historie"
     },
     {
       title: "o mnie",
-      link: "/about-me"
+      link: "/o-mnie"
     },
     {
       title: "kontakt",
-      link: "/contact"
+      link: "/kontakt"
     }
   ];
   filteredNavItems() {

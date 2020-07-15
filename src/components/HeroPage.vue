@@ -6,11 +6,11 @@
     }"
   >
     <div class="hero__container">
-      <h1 data-aos="fade-up">{{ this.title }}</h1>
-      <h2 class="highlighted" data-aos="fade-up" data-aos-delay="200">
+      <h1 ref="title">{{ this.title }}</h1>
+      <h2 ref="subtitle" class="highlighted">
         <span>{{ this.subTitle }}</span>
       </h2>
-      <p data-aos="fade-up" data-aos-delay="300">
+      <p ref="desc">
         {{ this.description }}
       </p>
     </div>
@@ -18,11 +18,50 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import { TimelineLite } from "gsap";
 
 @Component({
   props: ["title", "subTitle", "description", "image"]
 })
-export default class HeroPage extends Vue {}
+export default class HeroPage extends Vue {
+  mounted() {
+    const title = this.$refs.title;
+    const subtitle = this.$refs.subtitle;
+    const desc = this.$refs.desc;
+
+    const timeline1 = new TimelineLite();
+    const timeline2 = new TimelineLite();
+    const timeline3 = new TimelineLite();
+
+    timeline1
+      .from(title, {
+        delay: 0.5,
+        duration: 1.5,
+        opacity: 0,
+        y: -100,
+        ease: "power4"
+      })
+      .to(title, { y: 0 });
+    timeline2
+      .from(subtitle, {
+        delay: 1,
+        duration: 1.5,
+        opacity: 0,
+        y: 100,
+        ease: "power4"
+      })
+      .to(subtitle, { y: 0 });
+    timeline3
+      .from(desc, {
+        delay: 1.5,
+        duration: 1.5,
+        opacity: 0,
+        y: 100,
+        ease: "power4"
+      })
+      .to(desc, { y: 0 });
+  }
+}
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/global.scss";

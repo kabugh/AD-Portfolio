@@ -11,6 +11,7 @@
     "aos": "^2.3.4",
     "contentful": "^7.14.5",
     "core-js": "^3.6.5",
+    "gsap": "^3.4.0",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "^1.4.6",
     "vue": "^2.6.11",

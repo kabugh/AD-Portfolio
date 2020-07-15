@@ -6,13 +6,17 @@
         :index="index"
         :disable-scroll="true"
         @close="index = null"
+        v-if="zoomedPhotos"
       />
       <div class="grid">
         <div
           class="image__container"
           v-for="(image, i) in images"
           :key="i"
-          @click="index = i"
+          @click="
+            index = i;
+            pushRoute(image);
+          "
           data-aos="zoom-in"
           data-aos-easing="ease-in-out-quad"
           :data-aos-delay="200 + i * 100"
@@ -34,13 +38,22 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { LightGallery } from "vue-light-gallery";
+import { convertToSlug } from "@/utils/slugify";
 
 @Component({
-  props: ["images", "forInstagram"],
+  props: ["images", "forInstagram", "zoomedPhotos"],
   components: { LightGallery }
 })
 export default class PhotoGallery extends Vue {
   index = null;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  pushRoute(image: any) {
+    this.$router.push({
+      name: "Story",
+      params: { name: convertToSlug(image.name), image }
+    });
+  }
 }
 </script>
 <style lang="scss" scoped>
