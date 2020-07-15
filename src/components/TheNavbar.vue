@@ -6,6 +6,7 @@
         <h1>Alicja Dębek</h1>
       </div>
       <ul class="nav__items">
+        <li v-scroll-to="'.offer'">Oferta</li>
         <li
           @click="$router.push(item.link)"
           class="item"
@@ -14,6 +15,7 @@
         >
           {{ item.title }}
         </li>
+        <li v-scroll-to="'.contact'">Kontakt</li>
       </ul>
     </div>
   </nav>
@@ -25,24 +27,12 @@ import { Vue, Component } from "vue-property-decorator";
 export default class TheNavbar extends Vue {
   navItems = [
     {
-      title: "home",
-      link: "/"
-    },
-    {
-      title: "oferta",
-      link: "/oferta"
-    },
-    {
       title: "historie",
       link: "/historie"
     },
     {
       title: "o mnie",
       link: "/o-mnie"
-    },
-    {
-      title: "kontakt",
-      link: "/kontakt"
     }
   ];
 
@@ -58,7 +48,7 @@ nav {
   min-height: 12vh;
   position: fixed;
   background-color: white;
-  z-index: 100;
+  z-index: 99;
   transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   -webkit-transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   display: flex;
@@ -95,16 +85,22 @@ nav {
         height: 100%;
         @include backgroundDefault;
         background-size: contain;
-        background-image: url("../assets/images/logo.png");
+        // background-image: url("../assets/images/logo.png");
       }
     }
     .nav__items {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (min-height: 500px) {
+    .nav__container .nav__items {
       display: grid;
       grid-template-rows: 1fr;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       justify-content: center;
       align-items: center;
-      column-gap: 2vw;
+      column-gap: 1.5vw;
       .item {
         @include flex;
         transition: all 0.2s ease-in-out;

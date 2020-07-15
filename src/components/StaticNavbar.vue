@@ -1,11 +1,12 @@
 <template>
   <nav>
     <div class="nav__container">
-      <div class="logo__container">
+      <div class="logo__container" data-aos="fade-down" data-aos-delay="200">
         <!-- <div class="logo"></div> -->
         <h1>Alicja Dębek</h1>
       </div>
-      <ul class="nav__items">
+      <ul class="nav__items" data-aos="fade-down" data-aos-delay="400">
+        <li class="item" v-scroll-to="'.offer'">Oferta</li>
         <li
           @click="$router.push(item.link)"
           class="item"
@@ -14,6 +15,7 @@
         >
           {{ item.title }}
         </li>
+        <li class="item" v-scroll-to="'.contact'">Kontakt</li>
       </ul>
     </div>
   </nav>
@@ -25,24 +27,12 @@ import { Vue, Component } from "vue-property-decorator";
 export default class StaticNavbar extends Vue {
   navItems = [
     {
-      title: "home",
-      link: "/"
-    },
-    {
-      title: "oferta",
-      link: "/oferta"
-    },
-    {
       title: "historie",
       link: "/historie"
     },
     {
       title: "o mnie",
       link: "/o-mnie"
-    },
-    {
-      title: "kontakt",
-      link: "/kontakt"
     }
   ];
   filteredNavItems() {
