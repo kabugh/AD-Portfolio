@@ -1,4 +1,5 @@
-import { TweenLite } from "gsap";
+import { TweenLite, gsap } from "gsap";
+gsap.registerPlugin(TweenLite);
 
 const DEFAULT_DURATION = 1.5;
 

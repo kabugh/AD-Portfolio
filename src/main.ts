@@ -17,7 +17,7 @@ AOS.init({
   easing: "ease-in-out-quart"
 });
 
-gsap.registerPlugin(TweenLite, TimelineLite);
+gsap.registerPlugin(TimelineLite);
 
 Vue.config.productionTip = false;
 

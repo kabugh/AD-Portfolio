@@ -4,7 +4,7 @@
     <header class="hero" @click="$refs.slideshow.next()">
       <vue-displacement-slideshow
         :images="img"
-        :displacement="require('@/assets/images/displacement.png')"
+        :displacement="require('@/assets/images/displacement.jpg')"
         :intensity="0.2"
         :speedIn="1.5"
         :speedOut="1.5"
