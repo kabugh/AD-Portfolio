@@ -84,7 +84,6 @@
         </ul>
       </div>
     </section>
-    <Contact />
   </section>
 </template>
 
@@ -229,7 +228,7 @@ export default class Home extends Vue {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pushItem(item: any) {
     this.$router.push({
-      name: "Service",
+      name: "service",
       params: { name: convertToSlug(item.title), service: item }
     });
   }

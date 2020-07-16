@@ -7,31 +7,31 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home
   },
   {
     path: "/usługi/:name",
-    name: "Service",
+    name: "service",
     component: () =>
       import(/* webpackChunkName: "service" */ "../views/Service.vue"),
     props: true
   },
   {
     path: "/o-mnie",
-    name: "AboutMe",
+    name: "aboutMe",
     component: () =>
       import(/* webpackChunkName: "aboutMe" */ "../views/AboutMe.vue")
   },
   {
     path: "/historie",
-    name: "Stories",
+    name: "stories",
     component: () =>
       import(/* webpackChunkName: "stories" */ "../views/Stories.vue")
   },
   {
     path: "/historie/:name",
-    name: "Story",
+    name: "story",
     component: () =>
       import(/* webpackChunkName: "story" */ "../views/Story.vue"),
     props: true

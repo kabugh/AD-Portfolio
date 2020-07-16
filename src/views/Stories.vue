@@ -25,7 +25,8 @@
     <section class="content__container">
       <PhotoGallery
         :images="stories"
-        :forInstagram="false"
+        routeComponentName="story"
+        :displayImageOnly="false"
         :zoomedPhotos="false"
       />
     </section>
@@ -44,24 +45,36 @@ export default class Stories extends Vue {
   stories = [
     {
       name: "Wild Question Marks",
-      url:
+      frontImage:
         "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
+      images: [
+        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+      ]
     },
     {
       name: "Test",
-      url:
+      frontImage:
         "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
+      images: [
+        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+      ]
     },
     {
       name: "Story",
-      url:
+      frontImage:
         "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem."
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
+      images: [
+        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+      ]
     }
   ];
 }

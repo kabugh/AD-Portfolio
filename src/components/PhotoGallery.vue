@@ -11,22 +11,28 @@
       <div class="grid">
         <div
           class="image__container"
-          v-for="(image, i) in images"
+          v-for="(item, i) in images"
           :key="i"
           @click="
             index = i;
-            pushRoute(image);
+            pushRoute(item);
           "
           data-aos="zoom-in"
           data-aos-easing="ease-in-out-quad"
           :data-aos-delay="200 + i * 100"
         >
-          <img class="image" :src="image.url" />
+          <img
+            :src="item.frontImage"
+            :alt="item.name"
+            class="image"
+            v-if="!displayImageOnly"
+          />
+          <img :src="item" :alt="item" class="image" v-else />
           <div class="image__description_layer">
-            <div class="description__container" v-if="!forInstagram">
-              <h1>{{ image.name }}</h1>
+            <div class="description__container" v-if="!displayImageOnly">
+              <h1>{{ item.name }}</h1>
               <p>
-                {{ image.description }}
+                {{ item.description }}
               </p>
             </div>
           </div>
@@ -41,18 +47,19 @@ import { LightGallery } from "vue-light-gallery";
 import { convertToSlug } from "@/utils/slugify";
 
 @Component({
-  props: ["images", "forInstagram", "zoomedPhotos"],
+  props: ["images", "routeComponentName", "displayImageOnly", "zoomedPhotos"],
   components: { LightGallery }
 })
 export default class PhotoGallery extends Vue {
   index = null;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pushRoute(image: any) {
-    this.$router.push({
-      name: "Story",
-      params: { name: convertToSlug(image.name), image }
-    });
+  pushRoute(item: any) {
+    if (!this.$props.displayImageOnly)
+      this.$router.push({
+        name: this.$props.routeComponentName,
+        params: { name: convertToSlug(item.name), passedItem: item }
+      });
   }
 }
 </script>
@@ -139,8 +146,9 @@ export default class PhotoGallery extends Vue {
       }
     }
     @media (min-width: 1024px) {
+      padding: $verticalPadding $horizontalPadding;
       .grid {
-        grid-template-columns: repeat(3, minmax(16rem, 1fr));
+        grid-template-columns: repeat(3, minmax(12rem, 1fr));
       }
     }
   }

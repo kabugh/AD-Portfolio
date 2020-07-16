@@ -25,13 +25,16 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import { TimelineLite } from "gsap";
 
-@Component({
-  props: ["title", "subTitle", "description", "image"]
-})
+@Component
 export default class HeroPage extends Vue {
+  @Prop({ required: true }) title!: string;
+  @Prop({ required: false }) subTitle!: string;
+  @Prop({ required: false }) description!: string;
+  @Prop({ required: true }) image!: string;
+
   mounted() {
     const title = this.$refs.title;
     const subtitle = this.$refs.subtitle;
