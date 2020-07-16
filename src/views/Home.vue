@@ -1,23 +1,58 @@
 <template>
   <section class="home">
     <StaticNavbar />
-    <header class="hero" @click="$refs.slideshow.next()">
+    <header class="hero">
       <vue-displacement-slideshow
-        :images="img"
+        :images="slideShow.images"
         :displacement="require('@/assets/images/displacement.jpg')"
         :intensity="0.2"
         :speedIn="1.5"
         :speedOut="1.5"
         ease="expo.in"
         ref="slideshow"
+        @animationEnd="nextTitle"
       >
       </vue-displacement-slideshow>
+      <div
+        class="slideshow__controls"
+        data-aos="fade-up"
+        data-aos-offset="-200"
+        data-aos-delay="500"
+      >
+        <div class="prev__control" @click="$refs.slideshow.previous()"></div>
+        <h2>{{ currentTitle }}</h2>
+        <div class="next__control" @click="$refs.slideshow.next()"></div>
+      </div>
     </header>
+    <section class="introduction">
+      <div class="introduction__container">
+        <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+          Hej
+        </h1>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="150"
+          data-aos-duration="600"
+          class="paragraph__wrapper"
+        >
+          <p>
+            Nazywam się <span>Alicja Dębek</span> i zapraszam Cię do świata
+            fotografii naturalnej – czyli fotografii bez ustawiania, stresu i
+            udawania. Tutaj skupiamy się na szczerych emocjach, detalach, i
+            klimacie budowania opowieści.
+          </p>
+        </div>
+      </div>
+    </section>
     <section class="offer">
       <div class="offer__container">
         <div class="title__container">
-          <h1>Oferta</h1>
-          <h2>Something cool to say here</h2>
+          <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+            Oferta
+          </h1>
+          <h2 data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
+            Something cool to say here
+          </h2>
         </div>
         <ul class="offer__items">
           <li
@@ -33,6 +68,8 @@
                 :alt="item.title"
                 class="unselectable"
                 data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="600"
               />
 
               <div class="image__description_layer">
@@ -65,27 +102,22 @@ import { convertToSlug } from "@/utils/slugify";
   }
 })
 export default class Home extends Vue {
-  orientationClass(item: { orientation: string }) {
-    return {
-      horizontal: item.orientation === "horizontal",
-      vertical: item.orientation === "vertical"
-    };
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pushItem(item: any) {
-    this.$router.push({
-      name: "Service",
-      params: { name: convertToSlug(item.title), service: item }
-    });
-  }
-  img = [
-    require("@/assets/images/slideshow/1.jpg"),
-    require("@/assets/images/slideshow/2.jpg"),
-    require("@/assets/images/slideshow/3.jpg"),
-    require("@/assets/images/slideshow/4.jpg"),
-    require("@/assets/images/slideshow/5.jpg")
-  ];
+  slideShow = {
+    images: [
+      require("@/assets/images/slideshow/1.jpg"),
+      require("@/assets/images/slideshow/2.jpg"),
+      require("@/assets/images/slideshow/3.jpg"),
+      require("@/assets/images/slideshow/4.jpg"),
+      require("@/assets/images/slideshow/5.jpg")
+    ],
+    titles: [
+      "Basia & Roman",
+      "Emily & Luke",
+      "Sesja Kobieca",
+      "Jagoda & Adriani",
+      "Ola & Jacek"
+    ]
+  };
   images = [
     {
       url:
@@ -122,27 +154,85 @@ export default class Home extends Vue {
       title: "Reportaż Ślubny",
       description: "test",
       image: "slideshow/4.jpg",
-      orientation: "horizontal"
+      orientation: "horizontal",
+      article: [
+        "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
+        "Nie fotografuję tylko kluczowych momentów, szukam detali, ciekawych sytuacji, gestów, spojrzeń, wszystkiego, co składa się na klimat tego wyjątkowego dnia.",
+        "Potrafię sfotografować Was tak, abyście nie czuli się „ustawieni”. Na sesji plenerowej macie przede wszystkim świetnie się bawić, a ja zajmę się chwytaniem Waszych najlepszych momentów.",
+        "Moje zdjęcia mają specyficzny styl. Lubię minimalizm, detale, delikatne kolory, światłocienie, niedopowiedzenia. Warto zajrzeć do mojego portfolio lub na facebooka, by przekonać się, czy i Wam ten styl odpowiada",
+        "Wszyscy lubią gratisy! U mnie dostaniecie darmową sesję narzeczeńską, pendrive’a z albumem lub drewnianym pudełkiem na odbitki."
+      ]
     },
     {
       title: "Sesja Kobieca",
       description: "test",
       image: "girl.jpg",
-      orientation: "vertical"
+      orientation: "vertical",
+      article: [
+        "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
+        "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
+        "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
+        "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
+        "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
+        "Tylko Wy i Wasza opowieść."
+      ]
     },
     {
       title: "Sesja Lifestyle",
       description: "test",
       image: "fire.jpg",
-      orientation: "vertical"
+      orientation: "vertical",
+      article: [
+        "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
+        "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
+        "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
+        "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
+        "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
+        "Tylko Wy i Wasza opowieść."
+      ]
     },
     {
       title: "Fotografia okolicznościowa",
       description: "test",
       image: "slideshow/5.jpg",
-      orientation: "horizontal"
+      orientation: "horizontal",
+      article: [
+        "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
+        "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
+        "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
+        "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
+        "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
+        "Tylko Wy i Wasza opowieść."
+      ]
     }
   ];
+
+  currentTitleIndex = 0;
+  currentTitle = this.slideShow.titles[this.currentTitleIndex];
+
+  nextTitle() {
+    if (this.currentTitleIndex + 1 === this.slideShow.titles.length) {
+      this.currentTitleIndex = 0;
+    } else {
+      this.currentTitleIndex++;
+    }
+    this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
+  }
+
+  orientationClass(item: { orientation: string }) {
+    return {
+      horizontal: item.orientation === "horizontal",
+      vertical: item.orientation === "vertical"
+    };
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  pushItem(item: any) {
+    this.$router.push({
+      name: "Service",
+      params: { name: convertToSlug(item.title), service: item }
+    });
+  }
 }
 </script>
 <style lang="scss">
@@ -153,6 +243,35 @@ export default class Home extends Vue {
     width: 100%;
     height: 100vh;
     background-color: black;
+    position: relative;
+    font-family: "Crimson Text", sans-serif;
+    .slideshow__controls {
+      display: none;
+    }
+  }
+  .introduction {
+    width: 100%;
+    .introduction__container {
+      padding: $verticalPadding $horizontalPadding / 2 0 $horizontalPadding / 2;
+      color: black;
+      @include flex;
+      flex-direction: column;
+      position: relative;
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .paragraph__wrapper {
+        padding: $verticalPadding / 2 0;
+        margin: 0 auto;
+        p {
+          font-size: 1rem;
+          line-height: 2;
+        }
+      }
+    }
   }
   .offer {
     width: 100%;
@@ -216,6 +335,46 @@ export default class Home extends Vue {
     }
   }
   @media (min-width: 768px) and (min-height: 500px) {
+    .hero {
+      .slideshow__controls {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding-bottom: $verticalPadding;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        align-items: center;
+        column-gap: 2vh;
+        h2 {
+          font-size: 1.5rem;
+          transition: all 0.5s ease-in-out;
+        }
+        > div {
+          background-image: url("../assets/images/icons/arrow.png");
+          @include backgroundDefault;
+          width: 36px;
+          height: 36px;
+          &:first-of-type {
+            transform: rotate(180deg);
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .introduction .introduction__container {
+      h1 {
+        font-size: 3.5rem;
+      }
+      .paragraph__wrapper {
+        max-width: 70vw;
+        p {
+          font-size: 1.25rem;
+        }
+      }
+    }
     .offer .offer__container {
       .title__container {
         h1 {

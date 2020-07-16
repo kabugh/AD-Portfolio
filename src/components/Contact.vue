@@ -9,7 +9,7 @@
       <section class="contact__items--container">
         <div class="contact__items">
           <div class="contact__item">
-            <a href="mailto:kontakt@photo.pl">kontakt@photo.pl</a>
+            <a href="mailto:kontakt@alicjadebek.pl">kontakt@alicjadebek.pl</a>
           </div>
           <div class="contact__item">
             <a href="tel:0048691242622">+48 691 242 622</a>
