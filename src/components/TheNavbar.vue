@@ -2,8 +2,7 @@
   <nav>
     <div class="nav__container">
       <div class="logo__container">
-        <!-- <div class="logo"></div> -->
-        <h1>Alicja Dębek</h1>
+        <div class="logo"></div>
       </div>
       <ul class="nav__items">
         <li v-scroll-to="'.offer'">Oferta</li>
@@ -41,77 +40,3 @@ export default class TheNavbar extends Vue {
   }
 }
 </script>
-<style lang="scss">
-@import "@/assets/scss/global.scss";
-nav {
-  width: 100%;
-  min-height: 12vh;
-  position: fixed;
-  background-color: white;
-  z-index: 99;
-  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-  -webkit-transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  color: black;
-  @media (min-width: 700px) and (min-height: 1024px) {
-    min-height: 6vh;
-  }
-  -webkit-box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.1);
-
-  .nav__container {
-    width: 100%;
-    height: 100%;
-    padding: $verticalPadding 6vw;
-    display: grid;
-    column-gap: 4vw;
-    align-items: center;
-    grid-template-columns: auto auto;
-    .logo__container {
-      min-width: 10vw;
-      max-width: 20vw;
-      height: 80%;
-      h1 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-      .logo {
-        width: 100%;
-        height: 100%;
-        @include backgroundDefault;
-        background-size: contain;
-        // background-image: url("../assets/images/logo.png");
-      }
-    }
-    .nav__items {
-      display: none;
-    }
-  }
-
-  @media (min-width: 768px) and (min-height: 500px) {
-    .nav__container .nav__items {
-      display: grid;
-      grid-template-rows: 1fr;
-      grid-template-columns: repeat(4, 1fr);
-      justify-content: center;
-      align-items: center;
-      column-gap: 1.5vw;
-      .item {
-        @include flex;
-        transition: all 0.2s ease-in-out;
-        white-space: nowrap;
-        text-transform: uppercase;
-        &:hover {
-          color: #eeeeee;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
-</style>
