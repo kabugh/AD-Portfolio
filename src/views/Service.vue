@@ -1,7 +1,7 @@
 <template>
   <section class="service">
     <div class="service__container">
-      <div class="image__container">
+      <div class="image__container" :class="orientationClass(service)">
         <div
           :style="{
             backgroundImage:
@@ -23,7 +23,7 @@
           </p>
           <h2>Co charakteryzuje moją pracę:</h2>
           <ul>
-            <li v-for="(item, i) in article" :key="i">
+            <li v-for="(item, i) in service.article" :key="i">
               {{ item }}
             </li>
           </ul>
@@ -68,16 +68,20 @@ export default class Service extends Vue {
       .from(title, { duration: 1.5, opacity: 0, y: -20, ease: "power4" })
       .to(title, { y: 0 });
     timeline2
-      .from(content, { duration: 1, opacity: 0, y: -20, ease: "power4" })
+      .from(
+        content,
+        { duration: 1, opacity: 0, y: -20, ease: "power4" },
+        "-=1.5"
+      )
       .to(content, { y: 0 });
   }
-  article = [
-    "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
-    "Nie fotografuję tylko kluczowych momentów, szukam detali, ciekawych sytuacji, gestów, spojrzeń, wszystkiego, co składa się na klimat tego wyjątkowego dnia.",
-    "Potrafię sfotografować Was tak, abyście nie czuli się „ustawieni”. Na sesji plenerowej macie przede wszystkim świetnie się bawić, a ja zajmę się chwytaniem Waszych najlepszych momentów.",
-    "Moje zdjęcia mają specyficzny styl. Lubię minimalizm, detale, delikatne kolory, światłocienie, niedopowiedzenia. Warto zajrzeć do mojego portfolio lub na facebooka, by przekonać się, czy i Wam ten styl odpowiada",
-    "Wszyscy lubią gratisy! U mnie dostaniecie darmową sesję narzeczeńską, pendrive’a z albumem lub drewnianym pudełkiem na odbitki."
-  ];
+
+  orientationClass(item: { orientation: string }) {
+    return {
+      horizontal: item.orientation === "horizontal",
+      vertical: item.orientation === "vertical"
+    };
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -102,7 +106,15 @@ export default class Service extends Vue {
         @include backgroundDefault;
       }
       .overlay {
-        display: none;
+        // display: none;
+        position: absolute;
+        display: block;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        // transform: translate(5%, -5%);
+        background-color: black;
+        z-index: -1;
       }
     }
     .service__article {
@@ -131,10 +143,18 @@ export default class Service extends Vue {
       }
     }
   }
+  @media (min-width: 500px) and (min-height: 500px) {
+    .service__container .image__container.vertical {
+      max-width: 70%;
+    }
+  }
   @media (min-width: 768px) and (min-height: 500px) {
     .service__container {
       padding: 3 / 2 * $verticalPadding $horizontalPadding * 3 / 2;
       .image__container {
+        &.vertical {
+          max-width: 90%;
+        }
         .overlay {
           position: absolute;
           display: block;
@@ -154,6 +174,16 @@ export default class Service extends Vue {
       }
     }
   }
+  @media (min-width: 768px) and (min-height: 500px) and (max-height: 900px) {
+    .service__container .image__container.vertical {
+      max-width: 60%;
+    }
+  }
+  @media (min-width: 768px) and (min-height: 500px) and (max-height: 1024px) and (orientation: landscape) {
+    .service__container .image__container.vertical {
+      max-width: 60%;
+    }
+  }
   @media (min-width: 1024px) and (min-height: 500px) {
     .service__container {
       padding: 3 / 2 * $verticalPadding $horizontalPadding * 2;
@@ -169,6 +199,7 @@ export default class Service extends Vue {
   }
   @media (min-width: 1450px) and (min-height: 500px) {
     .service__container {
+      padding: 3 / 2 * $verticalPadding $horizontalPadding * 5 / 2;
       .service__article {
         padding: $verticalPadding / 2 0;
       }

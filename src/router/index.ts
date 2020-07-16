@@ -8,7 +8,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
   },
   {
     path: "/usługi/:name",
@@ -21,13 +21,13 @@ const routes: Array<RouteConfig> = [
     path: "/o-mnie",
     name: "AboutMe",
     component: () =>
-      import(/* webpackChunkName: "aboutMe" */ "../views/AboutMe.vue"),
+      import(/* webpackChunkName: "aboutMe" */ "../views/AboutMe.vue")
   },
   {
     path: "/historie",
     name: "Stories",
     component: () =>
-      import(/* webpackChunkName: "stories" */ "../views/Stories.vue"),
+      import(/* webpackChunkName: "stories" */ "../views/Stories.vue")
   },
   {
     path: "/historie/:name",
@@ -44,9 +44,9 @@ const router = new VueRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     }
   }
 });

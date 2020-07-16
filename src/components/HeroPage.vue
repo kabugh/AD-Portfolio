@@ -13,6 +13,14 @@
       <p ref="desc">
         {{ this.description }}
       </p>
+      <button
+        type="button"
+        ref="button"
+        class="thin"
+        v-scroll-to="'.content__container'"
+      >
+        Zobacz więcej
+      </button>
     </div>
   </header>
 </template>
@@ -28,10 +36,10 @@ export default class HeroPage extends Vue {
     const title = this.$refs.title;
     const subtitle = this.$refs.subtitle;
     const desc = this.$refs.desc;
+    const button = this.$refs.button;
 
     const timeline1 = new TimelineLite();
     const timeline2 = new TimelineLite();
-    const timeline3 = new TimelineLite();
 
     timeline1
       .from(title, {
@@ -41,17 +49,20 @@ export default class HeroPage extends Vue {
         y: -100,
         ease: "power4"
       })
-      .to(title, { y: 0 });
-    timeline2
-      .from(subtitle, {
-        delay: 1,
-        duration: 1.5,
-        opacity: 0,
-        y: 100,
-        ease: "power4"
-      })
+      .to(title, { y: 0 })
+      .from(
+        subtitle,
+        {
+          delay: 1,
+          duration: 1.5,
+          opacity: 0,
+          y: 100,
+          ease: "power4"
+        },
+        "-=2.5"
+      )
       .to(subtitle, { y: 0 });
-    timeline3
+    timeline2
       .from(desc, {
         delay: 1.5,
         duration: 1.5,
@@ -59,7 +70,9 @@ export default class HeroPage extends Vue {
         y: 100,
         ease: "power4"
       })
-      .to(desc, { y: 0 });
+      .to(desc, { y: 0 })
+      .from(button, { duration: 1, opacity: 0, y: 50, ease: "power4" }, "-=1.5")
+      .to(button, { y: 0 });
   }
 }
 </script>
@@ -111,6 +124,9 @@ export default class HeroPage extends Vue {
       font-size: 1rem;
       font-weight: 300;
       max-width: 60vw;
+    }
+    button {
+      margin-top: 5vh;
     }
   }
 }

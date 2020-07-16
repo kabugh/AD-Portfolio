@@ -22,11 +22,13 @@
         <button type="button" class="dark">Czytaj dalej</button>
       </div>
     </section> -->
-    <PhotoGallery
-      :images="stories"
-      :forInstagram="false"
-      :zoomedPhotos="false"
-    />
+    <section class="content__container">
+      <PhotoGallery
+        :images="stories"
+        :forInstagram="false"
+        :zoomedPhotos="false"
+      />
+    </section>
   </section>
 </template>
 <script lang="ts">

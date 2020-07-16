@@ -6,7 +6,7 @@ import store from "./store";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import VueScrollTo from "vue-scrollto";
-import { gsap, TweenLite, TimelineLite } from "gsap";
+import { gsap, TimelineLite } from "gsap";
 
 Vue.use(VueScrollTo, {
   easing: [0.86, 0, 0.07, 1],

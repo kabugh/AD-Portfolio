@@ -6,6 +6,7 @@
 @import "tailwindcss/utilities";
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,800");
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap');
 body {
   margin: 0;
   padding: 0;
@@ -74,7 +75,7 @@ button {
   background: transparent;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
   &:focus {
     outline: none;
   }
@@ -94,6 +95,10 @@ button {
   &.small-btn {
     padding: 8px 12px;
     font-size: 12px;
+  }
+  &.thin {
+    font-weight: 400;
+    border-width: 2px;
   }
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any,  */
 import { TweenLite, gsap } from "gsap";
 gsap.registerPlugin(TweenLite);
 
@@ -10,7 +11,7 @@ export const hideElement = (el: any, speed = DEFAULT_DURATION) => {
     "paddingTop",
     "paddingBottom",
     "marginTop",
-    "marginBottom",
+    "marginBottom"
   ];
 
   additionalSpacingProperties.forEach((property: any) => {
@@ -23,19 +24,19 @@ export const hideElement = (el: any, speed = DEFAULT_DURATION) => {
 
   el.showHideProps = oldSpacing;
   TweenLite.to(el, speed, {
-      overflow: "hidden",
-      ease: 'power4',
-    ...newSpacing,
+    overflow: "hidden",
+    ease: "power4",
+    ...newSpacing
   });
 };
 
 export const showElement = (el: any, speed = DEFAULT_DURATION) => {
   const showHideProps = el.showHideProps || {};
-    TweenLite.to(el, speed, {
-    ease: 'power4',
+  TweenLite.to(el, speed, {
+    ease: "power4",
     clearProps: "all",
-    ...showHideProps,
-    });
+    ...showHideProps
+  });
 };
 
 export default { showElement, hideElement };

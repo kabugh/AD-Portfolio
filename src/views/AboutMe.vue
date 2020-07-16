@@ -11,7 +11,7 @@
     <section
       v-for="(desc, index) in descs"
       :key="index"
-      class="description__section"
+      class="description__section content__container"
     >
       <div
         class="description__image"
@@ -22,25 +22,29 @@
       ></div>
       <div class="description__container">
         <div class="description__wrapper">
-          <h1 data-aos="fade-down">{{ desc.title }}</h1>
-          <h3 data-aos="fade-up" data-aos-delay="200">
+          <h1 data-aos="fade-down" data-aos-duration="500">{{ desc.title }}</h1>
+          <h3 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
             {{ desc.subtitle }}
           </h3>
-          <p data-aos="fade-up" data-aos-delay="400">{{ desc.paragraph }}</p>
+          <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
+            {{ desc.paragraph }}
+          </p>
         </div>
       </div>
     </section>
     <section class="photography">
       <div class="photography__container">
         <div class="title__container">
-          <h1 data-aos="fade-up" data-aos-delay="200">
+          <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
             Photography is an art.
           </h1>
-          <h1 data-aos="fade-up" data-aos-delay="250">
+          <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
             It’s about finding extra-ordinary.
           </h1>
-          <h1 data-aos="fade-up" data-aos-delay="300">In an ordinary place.</h1>
-          <p data-aos="fade-up" data-aos-delay="600">
+          <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+            In an ordinary place.
+          </h1>
+          <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="600">
             Fusce aliquam tincidunt hendrerit. Nunc tincidunt id velit sit amet
             vestibulum. In venenatis tempus odio ut dictum. Curabitur ac nisl
             molestie, facilisis nibh ac, facilisis ligula. Integer congue
@@ -74,7 +78,7 @@ import HeroPage from "@/components/HeroPage.vue";
 export default class AboutMe extends Vue {
   descs = [
     {
-      image: "animal.jpg",
+      image: "contact.jpg",
       title: "About me",
       subtitle:
         "Creative Photography Theme with Easy to Built Responsive Features",
@@ -82,7 +86,7 @@ export default class AboutMe extends Vue {
         "Proin facilisis varius nunc. Curabitur eros risus, ultrices et dui ut, luctus accumsan nibh. Fusce convallis sapien placerat tellus susvehicula. Cras vitae diam ut justo elementum faucibus eget a diam."
     },
     {
-      image: "animal.jpg",
+      image: "forest.jpg",
       title: "Visual Art",
       subtitle:
         "Creative Photography Theme with Easy to Built Responsive Features",
@@ -134,6 +138,7 @@ export default class AboutMe extends Vue {
         padding: $verticalPadding $horizontalPadding;
         h1 {
           font-size: 2.25rem;
+          font-weight: 600;
         }
         h3 {
           margin: 2vh 0;
