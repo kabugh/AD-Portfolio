@@ -38,7 +38,7 @@ export default class LoadingOverlay extends Vue {
     const timeline2 = new TimelineLite();
     timeline1.to(this.$refs.logo, { opacity: 0, y: -50 });
     timeline2.to(this.$refs.spinner, { opacity: 0 });
-    setTimeout(() => slideAnimations.hideElement(this.$refs.overlay), 500);
+    slideAnimations.hideElement(this.$refs.overlay);
     setTimeout(() => (document.body.style.overflowY = "visible"), 500);
   }
 }
