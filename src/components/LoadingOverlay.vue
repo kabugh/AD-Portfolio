@@ -56,11 +56,12 @@ export default class LoadingOverlay extends Vue {
     @include flex;
     flex-direction: column;
     .logo {
-      width: 360px;
-      height: 240px;
+      width: 200px;
+      height: 100px;
       background-image: url("../assets/images/logo.png");
       @include backgroundDefault;
       background-size: contain;
+      margin-bottom: 5vh;
     }
     @keyframes spin {
       from {
@@ -85,6 +86,13 @@ export default class LoadingOverlay extends Vue {
       width: 26px;
       height: 26px;
       animation: spin 1s infinite linear;
+    }
+  }
+
+  @media (min-width: 768px) and (min-height: 500px) {
+    .loading__overlay--container .logo {
+      width: 240px;
+      height: 120px;
     }
   }
 }

@@ -1,11 +1,24 @@
 <template>
   <nav>
-    <div class="nav__container">
+    <div
+      class="nav__container"
+      v-if="
+        this.$route.path === '/' ||
+          this.$route.path === '/o-mnie' ||
+          this.$route.path === '/historie'
+      "
+    >
       <div class="logo__container" data-aos="fade-down" data-aos-delay="200">
-        <div class="logo"></div>
+        <div class="logo" @click="$router.push('/')"></div>
       </div>
       <ul class="nav__items" data-aos="fade-down" data-aos-delay="400">
-        <li class="item" v-scroll-to="'.offer'">Oferta</li>
+        <li
+          class="item"
+          v-scroll-to="'.introduction'"
+          v-if="$route.path === '/'"
+        >
+          Oferta
+        </li>
         <li
           @click="$router.push(item.link)"
           class="item"
@@ -26,6 +39,9 @@
         </li>
       </ul>
       <div class="icons__container" data-aos="fade-left"></div>
+    </div>
+    <div class="nav__container" v-else>
+      <div class="back__button" @click="$router.go(-1)"></div>
     </div>
   </nav>
 </template>
@@ -59,10 +75,6 @@ export default class StaticNavbar extends Vue {
   navigateOutside(link: string) {
     window.open(link, "_blank");
   }
-
-  filteredNavItems() {
-    return this.navItems.filter(item => item.link !== this.$route.path);
-  }
 }
 </script>
 <style lang="scss" scoped>
@@ -94,10 +106,11 @@ nav {
     display: grid;
     column-gap: 4vw;
     align-items: center;
-    grid-template-columns: auto auto;
+    justify-content: space-between;
+    grid-template-columns: 0.5fr 0.25fr;
+
     .logo__container {
-      min-width: 10vw;
-      max-width: 20vw;
+      width: 100%;
       height: 12vh;
       .logo {
         width: 100%;
@@ -105,23 +118,44 @@ nav {
         @include backgroundDefault;
         background-size: contain;
         background-image: url("../assets/images/logo.png");
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
     .nav__items {
       display: none;
+    }
+    .back__button {
+      @include backgroundDefault;
+      background-image: url("../assets/images/icons/arrow.png");
+      width: 48px;
+      height: 48px;
+      transform: rotate(180deg);
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
   @media (min-width: 768px) and (min-height: 500px) {
     .nav__container {
       position: relative;
+      grid-template-columns: minmax(20vw, 0.5fr) 1fr;
+      justify-content: initial;
+
+      .logo__container {
+        min-width: 10vw;
+        max-width: 20vw;
+        height: 12vh;
+      }
       .nav__items {
         display: grid;
         grid-template-rows: 1fr;
-        grid-template-columns: repeat(5, minmax(2vw, 0.8fr));
+        grid-template-columns: repeat(auto-fit, minmax(6vw, 1fr));
         justify-content: center;
         align-items: center;
-        column-gap: 1vw;
+        column-gap: 2vw;
         .item {
           @include flex;
           transition: all 0.2s ease-in-out;
@@ -146,6 +180,15 @@ nav {
             }
           }
         }
+      }
+    }
+  }
+  @media (min-width: 1024px) and (min-height: 500px) {
+    .nav__container {
+      grid-template-columns: auto auto;
+      .nav__items {
+        grid-template-columns: repeat(auto-fit, minmax(2vw, 0.8fr));
+        column-gap: 1vw;
       }
     }
   }

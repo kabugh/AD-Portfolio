@@ -1,12 +1,12 @@
 <template>
   <section class="aboutMe page">
     <HeroPage
-      title="About"
-      subTitle="creative collection"
+      title="Alicja Dębek"
+      subTitle="o mnie"
       description="When, while the lovely valley teems with vapour around me, and
     the meridian sun strikes the upper surface of the impenetrable foliage of my
     trees."
-      image="bg.jpg"
+      image="about.jpg"
     />
     <section
       v-for="(desc, index) in descs"

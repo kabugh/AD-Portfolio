@@ -99,28 +99,6 @@ export default class HeroPage extends Vue {
       margin: 2vh 0;
       font-size: 1.25rem;
       text-transform: uppercase;
-      &.highlighted {
-        text-align: center;
-        > span {
-          position: relative;
-          display: inline-block;
-          &:before,
-          &:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            border-bottom: 1px solid;
-            width: 20px;
-            margin: 0 20px;
-          }
-        }
-        > span:before {
-          right: 100%;
-        }
-        > span:after {
-          left: 100%;
-        }
-      }
     }
     p {
       text-align: center;
@@ -130,6 +108,30 @@ export default class HeroPage extends Vue {
     }
     button {
       margin-top: 5vh;
+    }
+  }
+}
+@media (min-width: 350px) {
+  .hero .hero__container h2.highlighted {
+    text-align: center;
+    > span {
+      position: relative;
+      display: inline-block;
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        border-bottom: 1px solid;
+        width: 20px;
+        margin: 0 20px;
+      }
+    }
+    > span:before {
+      right: 100%;
+    }
+    > span:after {
+      left: 100%;
     }
   }
 }

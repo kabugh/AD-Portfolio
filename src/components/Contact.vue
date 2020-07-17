@@ -1,6 +1,6 @@
 <template>
   <section class="contact">
-    <div class="contact__image--wrapper">
+    <div class="contact__image--wrapper" v-if="$route.path === '/'">
       <div class="contact__image"></div>
     </div>
     <div class="contact__container">

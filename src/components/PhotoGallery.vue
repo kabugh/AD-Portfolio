@@ -17,7 +17,7 @@
             index = i;
             pushRoute(item);
           "
-          data-aos="zoom-in"
+          data-aos="fade-up"
           data-aos-easing="ease-in-out-quad"
           :data-aos-delay="200 + i * 100"
         >
@@ -88,7 +88,6 @@ export default class PhotoGallery extends Vue {
       }
     }
     .image__container {
-      @include backgroundDefault;
       @include flex;
       align-items: flex-end;
       width: 100%;
@@ -100,6 +99,7 @@ export default class PhotoGallery extends Vue {
       .image {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
       .image__description_layer {
         position: absolute;
@@ -107,7 +107,7 @@ export default class PhotoGallery extends Vue {
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(10, 13, 26, 0.4);
+        background: rgba(10, 13, 26, 0.6);
         color: #fff;
         visibility: hidden;
         opacity: 0;

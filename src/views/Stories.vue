@@ -52,7 +52,10 @@ export default class Stories extends Vue {
       images: [
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1825-1024x683.jpg",
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2188-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg"
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2340-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3294-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2220-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1976-1024x683.jpg"
       ]
     },
     {

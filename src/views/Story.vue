@@ -17,7 +17,9 @@
         v-for="(element, index) in storyData"
         :key="index"
       >
-        <h1 data-aos="fade-up" data-aos-delay="100">{{ element.title }}</h1>
+        <h1 data-aos="fade-up" :data-aos-delay="100 + index * 100">
+          {{ element.title }}
+        </h1>
         <h3 data-aos="fade-up" data-aos-delay="200">{{ element.lead }}</h3>
         <p data-aos="fade-up" data-aos-delay="300">{{ element.paragraph }}</p>
         <div data-aos="fade-up" data-aos-delay="400" class="image__wrapper">
@@ -118,7 +120,6 @@ export default class Story extends Vue {
     height: 50vmin;
     min-height: 40vh;
     @include backgroundDefault;
-    background-image: url("../assets/images/bg.jpg");
     @include flex;
     .hero__container {
       @include flex;
