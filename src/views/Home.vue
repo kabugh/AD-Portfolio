@@ -1,6 +1,5 @@
 <template>
   <section class="home">
-    <StaticNavbar />
     <header class="hero">
       <vue-displacement-slideshow
         :images="slideShow.images"
@@ -20,7 +19,11 @@
         data-aos-delay="500"
       >
         <div class="prev__control" @click="$refs.slideshow.previous()"></div>
-        <h2>{{ currentTitle }}</h2>
+        <transition name="slide-fade" mode="out-in">
+          <h2 :key="currentTitle" ref="currentTitle">
+            {{ currentTitle }}
+          </h2>
+        </transition>
         <div class="next__control" @click="$refs.slideshow.next()"></div>
       </div>
     </header>
@@ -89,18 +92,27 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import StaticNavbar from "@/components/StaticNavbar.vue";
 import Contact from "@/components/Contact.vue";
 import VueDisplacementSlideshow from "vue-displacement-slideshow";
 import { convertToSlug } from "@/utils/slugify";
+
 @Component({
   components: {
-    StaticNavbar,
     Contact,
     VueDisplacementSlideshow
   }
 })
 export default class Home extends Vue {
+  mounted() {
+    this.$watch(
+      () => (this.$refs.slideshow as any).currentImage,
+      val => {
+        this.currentTitleIndex = val;
+        this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
+      }
+    );
+  }
+
   slideShow = {
     images: [
       require("@/assets/images/slideshow/1.jpg"),
@@ -210,12 +222,13 @@ export default class Home extends Vue {
   currentTitle = this.slideShow.titles[this.currentTitleIndex];
 
   nextTitle() {
-    if (this.currentTitleIndex + 1 === this.slideShow.titles.length) {
-      this.currentTitleIndex = 0;
-    } else {
-      this.currentTitleIndex++;
-    }
-    this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
+    this.$watch(
+      () => (this.$refs.slideshow as any).currentImage,
+      val => {
+        this.currentTitleIndex = val;
+        this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
+      }
+    );
   }
 
   orientationClass(item: { orientation: string }) {
@@ -236,6 +249,15 @@ export default class Home extends Vue {
 </script>
 <style lang="scss">
 @import "@/assets/scss/global.scss";
+.slide-fade-enter-active {
+  transition: opacity 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.slide-fade-leave-active {
+  transition: opacity 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.slide-fade-leave-to {
+  opacity: 0;
+}
 .home {
   width: 100%;
   .hero {
@@ -245,7 +267,31 @@ export default class Home extends Vue {
     position: relative;
     font-family: "Crimson Text", sans-serif;
     .slideshow__controls {
-      display: none;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      padding: $verticalPadding $horizontalPadding / 2;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      justify-items: center;
+      align-items: center;
+      column-gap: 2vh;
+      h2 {
+        font-size: 1.25rem;
+        transition: all 1s 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      > div {
+        background-image: url("../assets/images/icons/arrow.png");
+        @include backgroundDefault;
+        width: 48px;
+        height: 48px;
+        &:first-of-type {
+          transform: rotate(180deg);
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
   .introduction {
@@ -328,6 +374,12 @@ export default class Home extends Vue {
     }
   }
   @media (min-width: 450px) and (min-height: 500px) {
+    .hero .slideshow__controls {
+      grid-template-columns: repeat(3, 1fr);
+      padding-top: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
     .offer .offer__container .offer__items .offer__item.vertical {
       max-width: 60%;
       margin: 0 auto;
@@ -336,30 +388,12 @@ export default class Home extends Vue {
   @media (min-width: 768px) and (min-height: 500px) {
     .hero {
       .slideshow__controls {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        padding-bottom: $verticalPadding;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        justify-items: center;
-        align-items: center;
-        column-gap: 2vh;
         h2 {
           font-size: 1.5rem;
-          transition: all 0.5s ease-in-out;
         }
         > div {
-          background-image: url("../assets/images/icons/arrow.png");
-          @include backgroundDefault;
           width: 36px;
           height: 36px;
-          &:first-of-type {
-            transform: rotate(180deg);
-          }
-          &:hover {
-            cursor: pointer;
-          }
         }
       }
     }
