@@ -44,36 +44,38 @@ import PhotoGallery from "@/components/PhotoGallery.vue";
 export default class Stories extends Vue {
   stories = [
     {
-      name: "Wild Question Marks",
+      name: "Ślub humanistyczny Jagody i Adriani’ego",
       frontImage:
-        "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3406-1024x683.jpg",
       description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
       images: [
-        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1825-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2188-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg"
       ]
     },
     {
       name: "Test",
-      frontImage:
-        "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      frontImage: "http://eterlight.pl/wp-content/uploads/2018/08/IMG_9374.jpg",
       description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
       images: [
-        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg"
       ]
     },
     {
-      name: "Story",
+      name: "Opowieść",
       frontImage:
-        "https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "http://eterlight.pl/wp-content/uploads/2017/07/IMG_4126-1024x683.jpg",
       description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
+        "Jest i pierwsza pełna opowieść ślubna! A zaczęło się od tego, że dwoje zakochanych ludzi postanowiło się pobrać, a ich szczęście promieniało tak mocno, że mogłoby zarazić cały Milicz",
       images: [
-        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-        "https://images.unsplash.com/photo-1594899756066-46964fff3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1976-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2212-1024x683.jpg",
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2225-1024x683.jpg"
       ]
     }
   ];

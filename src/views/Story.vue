@@ -12,25 +12,24 @@
       </div>
     </header>
     <article class="story__container" ref="article">
-      <h1>Photo Story</h1>
-      <h3>
-        Build an elegantly modern, responsive website that’s creative,
-        accessible and beautifully presented. A well-designed website can change
-        your conversion and a profit for good.
-      </h3>
-      <p>
-        Fusce aliquam tincidunt hendrerit. Nunc tincidunt id velit sit amet
-        vestibulum. In venenatis tempus odio ut dictum. Curabitur ac nisl
-        molestie, facilisis nibh ac, facilisis ligula. Integer congue malesuada
-        eros congue varius. Sed malesuada dolor eget velit euismod pretium.
-        Etiam porttitor finibus pretium. Nam suscipit vel ligula at dharetra.
-      </p>
-      <PhotoGallery
-        :images="passedItem.images"
-        :displayImageOnly="true"
-        :zoomedPhotos="true"
-      />
+      <section
+        class="block__container"
+        v-for="(element, index) in storyData"
+        :key="index"
+      >
+        <h1 data-aos="fade-up" data-aos-delay="100">{{ element.title }}</h1>
+        <h3 data-aos="fade-up" data-aos-delay="200">{{ element.lead }}</h3>
+        <p data-aos="fade-up" data-aos-delay="300">{{ element.paragraph }}</p>
+        <div data-aos="fade-up" data-aos-delay="400" class="image__wrapper">
+          <img :src="element.image" :alt="element.title" class="unselectable" />
+        </div>
+      </section>
     </article>
+    <PhotoGallery
+      :images="passedItem.images"
+      :displayImageOnly="true"
+      :zoomedPhotos="true"
+    />
   </section>
 </template>
 <script lang="ts">
@@ -86,9 +85,30 @@ export default class Story extends Vue {
       )
       .to(article, { y: 0 });
   }
+
+  storyData = [
+    {
+      title: "Przygotowania",
+      lead:
+        "Build an elegantly modern, responsive website that’s creative, accessible and beautifully presented. A well-designed website can change your conversion and a profit for good.",
+      paragraph:
+        "Fusce aliquam tincidunt hendrerit. Nunc tincidunt id velit sit amet vestibulum. In venenatis tempus odio ut dictum. Curabitur ac nisl molestie, facilisis nibh ac, facilisis ligula. Integer congue malesuada eros congue varius. Sed malesuada dolor eget velit euismod pretium. Etiam porttitor finibus pretium. Nam suscipit vel ligula at dharetra.",
+      image:
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2660-1024x683.jpg"
+    },
+    {
+      title: "Day One",
+      lead:
+        "Build an elegantly modern, responsive website that’s creative, accessible and beautifully presented. A well-designed website can change your conversion and a profit for good.",
+      paragraph:
+        "Fusce aliquam tincidunt hendrerit. Nunc tincidunt id velit sit amet vestibulum. In venenatis tempus odio ut dictum. Curabitur ac nisl molestie, facilisis nibh ac, facilisis ligula. Integer congue malesuada eros congue varius. Sed malesuada dolor eget velit euismod pretium. Etiam porttitor finibus pretium. Nam suscipit vel ligula at dharetra.",
+      image:
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3213-1024x683.jpg"
+    }
+  ];
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/scss/global.scss";
 
 .story {
@@ -112,27 +132,62 @@ export default class Story extends Vue {
     }
   }
   .story__container {
-    color: black;
-    padding: $verticalPadding $horizontalPadding / 2;
     display: grid;
     grid-template-columns: minmax(20vw, 1fr);
-    row-gap: 2vh;
-    h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      display: inline;
+    row-gap: $verticalPadding;
+    color: black;
+    padding: $verticalPadding $horizontalPadding / 2;
+    position: relative;
+    .block__container {
+      display: grid;
+      grid-template-columns: minmax(20vw, 1fr);
+      row-gap: 2vh;
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        display: inline;
+      }
+      h3 {
+        font-size: 1rem;
+        color: $thirdColor;
+        font-weight: 500;
+        margin: $verticalPadding / 4 0;
+        display: inline;
+      }
+      p {
+        font-size: 0.875rem;
+        line-height: 2;
+      }
+      .image__wrapper {
+        width: 100%;
+        margin-top: 4vh;
+        img {
+          width: 100%;
+          height: 100%;
+          max-height: 70vh;
+        }
+      }
     }
-    h3 {
-      font-size: 1rem;
-      color: $thirdColor;
-      font-weight: 500;
-      margin: $verticalPadding / 4 0;
-      display: inline;
+  }
+  .photoGallery .photoGallery__container {
+    padding: $verticalPadding $horizontalPadding / 2;
+    .image__container .image {
     }
-    p {
-      font-size: 0.875rem;
-      line-height: 2;
+  }
+  @media (max-height: 500px) and (orientation: landscape) {
+    .story__container {
+      row-gap: $verticalPadding * 2;
+      .block__container {
+        .image__wrapper {
+          width: 70%;
+          margin-left: auto;
+          margin-right: auto;
+          img {
+            max-height: 70vh;
+          }
+        }
+      }
     }
   }
   @media (min-width: 450px) {
@@ -141,18 +196,37 @@ export default class Story extends Vue {
     }
   }
   @media (min-width: 768px) and (min-height: 500px) {
-    .story__container {
+    .hero .hero__container h1 {
+      font-size: 3rem;
+    }
+    .story__container,
+    .photoGallery .photoGallery__container {
       padding: $verticalPadding $horizontalPadding;
     }
   }
   @media (min-width: 1024px) and (min-height: 500px) {
-    .story__container {
+    .story__container,
+    .photoGallery .photoGallery__container {
       padding: $verticalPadding $horizontalPadding * 3 /2;
     }
   }
   @media (min-width: 1250px) and (min-height: 500px) {
     .story__container {
       padding: $verticalPadding $horizontalPadding * 2;
+      .block__container {
+        h1 {
+          font-size: 2.25rem;
+        }
+        h3 {
+          font-size: 1.25rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+    .photoGallery .photoGallery__container {
+      padding: $verticalPadding $horizontalPadding;
     }
   }
 }
