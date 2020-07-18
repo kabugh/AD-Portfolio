@@ -28,7 +28,10 @@
             v-if="!displayImageOnly"
           />
           <img :src="item" :alt="item" class="image" v-else />
-          <div class="image__description_layer">
+          <div
+            class="image__description_layer"
+            :class="{ light: displayImageOnly }"
+          >
             <div class="description__container" v-if="!displayImageOnly">
               <h1>{{ item.name }}</h1>
               <p>
@@ -115,6 +118,9 @@ export default class PhotoGallery extends Vue {
         align-items: flex-end;
         transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1),
           visibility 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        &.light {
+          background: transparent;
+        }
       }
 
       .description__container {

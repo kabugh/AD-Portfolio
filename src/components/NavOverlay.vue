@@ -5,10 +5,20 @@
         <li
           class="item"
           @click="$router.push(item.link)"
-          v-for="(item, i) in navItems"
+          v-for="(item, i) in filteredNavItems"
           :key="i"
         >
           {{ item.title }}
+        </li>
+        <li
+          class="item"
+          v-if="$route.path === '/'"
+          v-scroll-to="'.introduction'"
+        >
+          Oferta
+        </li>
+        <li class="item" v-scroll-to="'.contact'">
+          Kontakt
         </li>
       </ul>
     </div>
@@ -50,11 +60,7 @@ export default class NavOverlay extends Vue {
 // enter/leave overlay animation
 .navOverlay-enter-active,
 .navOverlay-leave-active {
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.navOverlay-leave-active {
-  transition-duration: 0.6s;
+  transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .navOverlay-enter,
@@ -86,7 +92,7 @@ export default class NavOverlay extends Vue {
       row-gap: $verticalPadding;
 
       .item {
-        font-size: 3rem;
+        font-size: 2.75rem;
         line-height: 1.5;
         text-align: center;
         &:hover {
