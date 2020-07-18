@@ -109,28 +109,21 @@ export default class PhotoGallery extends Vue {
         right: 0;
         background: rgba(10, 13, 26, 0.6);
         color: #fff;
-        visibility: hidden;
-        opacity: 0;
+        // visibility: hidden;
+        // opacity: 0;
         @include flex;
         align-items: flex-end;
         transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1),
           visibility 0.8s cubic-bezier(0.65, 0, 0.35, 1);
       }
-      &:hover .image__description_layer {
-        visibility: visible;
-        opacity: 1;
-      }
 
-      &:hover .description__container {
-        transform: translateY(0);
-      }
       .description__container {
         transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-        transform: translateY(1em);
-        padding: 4vh;
+        max-height: 100%;
+        padding: 4vmin;
         text-align: center;
         h1 {
-          font-size: 1.25rem;
+          font-size: 1rem;
           text-transform: capitalize;
           margin-bottom: 2vh;
         }
@@ -145,10 +138,56 @@ export default class PhotoGallery extends Vue {
         grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
       }
     }
+    @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+      .image__container {
+        .image__description_layer {
+          opacity: 0;
+          visibility: hidden;
+        }
+        &:hover .image__description_layer {
+          visibility: visible;
+          opacity: 1;
+        }
+
+        &:hover .description__container {
+          transform: translateY(0);
+        }
+        .description__container {
+          font-size: 1.25rem;
+          transform: translateY(1em);
+        }
+      }
+    }
     @media (min-width: 1024px) {
       padding: $verticalPadding $horizontalPadding;
       .grid {
         grid-template-columns: repeat(3, minmax(12rem, 1fr));
+      }
+    }
+    @media screen and (min-width: 1024px) and (min-height: 1023px) and (max-height: 1024px) and (orientation: landscape) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(12rem, 1fr));
+      }
+      .image__container .description__container {
+        h1 {
+          font-size: 1.25rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+    @media (min-width: 1024px) and (min-height: 1366px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(12rem, 1fr));
+      }
+      .image__container .description__container {
+        h1 {
+          font-size: 1.25rem;
+        }
+        p {
+          font-size: 1rem;
+        }
       }
     }
   }

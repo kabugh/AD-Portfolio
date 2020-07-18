@@ -1,20 +1,11 @@
 <template>
   <section class="contact">
-    <div class="contact__image--wrapper" v-if="$route.path === '/'">
-      <div class="contact__image"></div>
-    </div>
     <div class="contact__container">
-      <h1>So how can I make you shine?</h1>
-      <h2 class="logo">logo AD here</h2>
+      <h1 data-aos="fade-up" data-aos-delay="300">
+        So how can I make you shine?
+      </h1>
+      <h2 data-aos="fade-up" data-aos-delay="400">black logo here</h2>
       <section class="contact__items--container">
-        <div class="contact__items">
-          <div class="contact__item">
-            <a href="mailto:kontakt@alicjadebek.pl">kontakt@alicjadebek.pl</a>
-          </div>
-          <div class="contact__item">
-            <a href="tel:0048691242622">+48 691 242 622</a>
-          </div>
-        </div>
         <div class="socials__items">
           <div class="socials__item" v-for="(item, j) in socialsItems" :key="j">
             <img
@@ -23,6 +14,14 @@
               class="icon"
               @click="navigateOutside(item.link)"
             />
+          </div>
+        </div>
+        <div class="contact__items">
+          <div class="contact__item">
+            <a href="mailto:kontakt@alicjadebek.pl">kontakt@alicjadebek.pl</a>
+          </div>
+          <div class="contact__item">
+            <a href="tel:0048691242622">+48 691 242 622</a>
           </div>
         </div>
       </section>
@@ -51,16 +50,6 @@ export default class Contact extends Vue {
 .contact {
   width: 100%;
   padding: $verticalPadding 0;
-  .contact__image--wrapper {
-    margin: $verticalPadding / 2 $horizontalPadding / 2;
-    height: 50vh;
-    .contact__image {
-      width: 100%;
-      height: 100%;
-      @include backgroundDefault;
-      background-image: url("../assets/images/contact.jpg");
-    }
-  }
   .contact__container {
     color: black;
     padding: $verticalPadding $horizontalPadding;
@@ -139,16 +128,11 @@ export default class Contact extends Vue {
     }
   }
   @media (min-width: 768px) and (min-height: 500px) {
-    .contact__image--wrapper {
-      margin: $verticalPadding $horizontalPadding;
-    }
     .contact__container {
       h1 {
         font-size: 2.5rem;
       }
     }
-  }
-  @media (min-width: 1024px) and (min-height: 500px) {
   }
 }
 </style>

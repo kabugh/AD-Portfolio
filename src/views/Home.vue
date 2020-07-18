@@ -50,10 +50,10 @@
     <section class="offer">
       <div class="offer__container">
         <div class="title__container">
-          <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+          <h1 data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
             Oferta
           </h1>
-          <h2 data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
+          <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
             Something cool to say here
           </h2>
         </div>
@@ -71,7 +71,7 @@
                 :alt="item.title"
                 class="unselectable"
                 data-aos="fade-up"
-                data-aos-delay="100"
+                data-aos-delay="300"
                 data-aos-duration="600"
               />
 
@@ -81,8 +81,8 @@
                 </div>
               </div>
             </div>
-            <h1 data-aos="fade-up" data-aos-delay="100">{{ item.title }}</h1>
-            <hr data-aos="fade-up" data-aos-delay="200" class="title__line" />
+            <h1 data-aos="fade-up" data-aos-delay="300">{{ item.title }}</h1>
+            <hr data-aos="fade-up" data-aos-delay="300" class="title__line" />
           </li>
         </ul>
       </div>
@@ -105,6 +105,7 @@ import { convertToSlug } from "@/utils/slugify";
 export default class Home extends Vue {
   mounted() {
     this.$watch(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       () => (this.$refs.slideshow as any).currentImage,
       val => {
         this.currentTitleIndex = val;
@@ -223,6 +224,7 @@ export default class Home extends Vue {
 
   nextTitle() {
     this.$watch(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       () => (this.$refs.slideshow as any).currentImage,
       val => {
         this.currentTitleIndex = val;
@@ -285,7 +287,7 @@ export default class Home extends Vue {
         @include backgroundDefault;
         width: 48px;
         height: 48px;
-        &:first-of-type {
+        &:last-of-type {
           transform: rotate(180deg);
         }
         &:hover {

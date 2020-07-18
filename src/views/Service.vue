@@ -30,6 +30,7 @@
         </div>
       </article>
     </div>
+    <div class="back__button" @click="$router.go(-1)" ref="arrow"></div>
   </section>
 </template>
 <script lang="ts">
@@ -45,6 +46,7 @@ export default class Service extends Vue {
     const overlay = this.$refs.overlay;
     const title = this.$refs.title;
     const content = this.$refs.content;
+    const arrow = this.$refs.arrow;
 
     const timeline1 = new TimelineLite();
     const timeline2 = new TimelineLite();
@@ -66,7 +68,14 @@ export default class Service extends Vue {
       .to(image, { y: 0 });
     timeline1
       .from(title, { duration: 1.5, opacity: 0, y: -20, ease: "power4" })
-      .to(title, { y: 0 });
+      .to(title, { y: 0 })
+      .from(
+        arrow,
+        { duration: 1.5, opacity: 0, y: -20, ease: "power4" },
+        "-=1.5"
+      )
+      .to(arrow, { y: 0 });
+
     timeline2
       .from(
         content,
@@ -88,6 +97,7 @@ export default class Service extends Vue {
 @import "@/assets/scss/global.scss";
 .service {
   width: 100%;
+  position: relative;
   .service__container {
     color: black;
     @include flex;
@@ -143,9 +153,29 @@ export default class Service extends Vue {
       }
     }
   }
+  .back__button {
+    top: $verticalPadding / 4;
+    left: $verticalPadding / 2;
+    position: absolute;
+    @include backgroundDefault;
+    background-image: url("../assets/images/icons/arrow_black.png");
+    width: 32px;
+    height: 32px;
+    &:hover {
+      cursor: pointer;
+    }
+    @media (min-width: 360px) {
+      width: 48px;
+      height: 48px;
+    }
+  }
   @media (min-width: 500px) and (min-height: 500px) {
     .service__container .image__container.vertical {
       max-width: 70%;
+    }
+    .back__button {
+      top: $verticalPadding / 2;
+      left: $verticalPadding;
     }
   }
   @media (min-width: 768px) and (min-height: 500px) {
@@ -172,6 +202,11 @@ export default class Service extends Vue {
           margin: $verticalPadding / 4 0;
         }
       }
+    }
+    .back__button {
+      position: fixed;
+      top: $verticalPadding;
+      left: $verticalPadding;
     }
   }
   @media (min-width: 768px) and (min-height: 500px) and (max-height: 900px) {
