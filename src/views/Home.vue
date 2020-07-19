@@ -41,7 +41,7 @@
           <p>
             Nazywam się <span>Alicja Dębek</span> i zapraszam Cię do świata
             fotografii naturalnej – czyli fotografii bez ustawiania, stresu i
-            udawania. Tutaj skupiamy się na szczerych emocjach, detalach, i
+            udawania. Tutaj skupiamy się na szczerych emocjach, detalach i
             klimacie budowania opowieści.
           </p>
         </div>
@@ -267,7 +267,6 @@ export default class Home extends Vue {
     height: 100vh;
     background-color: black;
     position: relative;
-    font-family: "Crimson Text", sans-serif;
     .slideshow__controls {
       width: 100%;
       position: absolute;

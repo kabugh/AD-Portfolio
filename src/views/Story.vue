@@ -173,8 +173,6 @@ export default class Story extends Vue {
   }
   .photoGallery .photoGallery__container {
     padding: $verticalPadding $horizontalPadding / 2;
-    .image__container .image {
-    }
   }
   @media (min-width: 360px) {
     .story__container .block__container {
