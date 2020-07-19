@@ -103,7 +103,8 @@ export default class Service extends Vue {
     @include flex;
     flex-direction: column;
     width: 100%;
-    padding: 3/2 * $verticalPadding $horizontalPadding / 2;
+    padding: 3/2 * $verticalPadding $horizontalPadding / 2 0 $horizontalPadding /
+      2;
     .image__container {
       max-width: 100%;
       max-height: 60vh;
@@ -128,7 +129,7 @@ export default class Service extends Vue {
       }
     }
     .service__article {
-      padding: $verticalPadding 0;
+      padding: $verticalPadding 0 $verticalPadding / 2 0;
       @include flex;
       flex-direction: column;
       h1,
@@ -140,16 +141,20 @@ export default class Service extends Vue {
         text-transform: uppercase;
       }
       h2 {
-        font-size: 1rem;
+        font-size: 1.25rem;
       }
       p {
         margin: $verticalPadding / 2 0;
         text-align: left;
+        font-size: 1.125rem;
       }
       ul {
         margin: $verticalPadding / 4 0;
         display: grid;
         row-gap: $verticalPadding / 2;
+        li {
+          font-size: 1.125rem;
+        }
       }
     }
   }

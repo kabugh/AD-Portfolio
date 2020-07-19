@@ -224,13 +224,13 @@ export default class Story extends Vue {
       padding: $verticalPadding $horizontalPadding * 2;
       .block__container {
         h1 {
-          font-size: 2.25rem;
+          font-size: 2.5rem;
         }
         h3 {
           font-size: 1.25rem;
         }
         p {
-          font-size: 1rem;
+          font-size: 1.125rem;
         }
       }
     }
@@ -240,14 +240,8 @@ export default class Story extends Vue {
   }
   @media (min-width: 1450px) and (min-height: 500px) {
     .story__container .block__container {
-      h1 {
-        font-size: 2.5rem;
-      }
       h3 {
         font-size: 1.5rem;
-      }
-      p {
-        font-size: 1.125rem;
       }
     }
   }

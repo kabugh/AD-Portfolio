@@ -446,6 +446,10 @@ export default class Home extends Vue {
         font-size: 2rem;
       }
     }
+    .introduction .introduction__container {
+      padding-left: 2 * $horizontalPadding;
+      padding-right: 2 * $horizontalPadding;
+    }
     .offer .offer__container {
       .offer__items {
         grid-auto-rows: fit-content($verticalPadding);
