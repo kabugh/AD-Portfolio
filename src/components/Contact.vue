@@ -2,9 +2,16 @@
   <section class="contact">
     <div class="contact__container">
       <h1 data-aos="fade-up" data-aos-delay="300">
-        So how can I make you shine?
+        Ogranicza nas tylko wyobraźnia
       </h1>
-      <h2 data-aos="fade-up" data-aos-delay="400">black logo here</h2>
+      <Instagram />
+      <img
+        src="@/assets/images/logo_black.png"
+        alt="logo_black"
+        class="logo unselectable"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      />
       <section class="contact__items--container">
         <div class="socials__items">
           <div class="socials__item" v-for="(item, j) in socialsItems" :key="j">
@@ -30,8 +37,11 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import Instagram from "./Instagram.vue";
 
-@Component
+@Component({
+  components: { Instagram }
+})
 export default class Contact extends Vue {
   navigateOutside(link: string) {
     window.open(link, "_blank");
@@ -62,15 +72,15 @@ export default class Contact extends Vue {
       text-transform: uppercase;
       text-align: center;
     }
-    h2,
     .logo {
-      margin-top: 4vh;
+      margin-top: $verticalPadding / 2;
+      max-width: 60vw;
     }
     .contact__items--container {
       display: grid;
       grid-template-rows: repeat(2, 1fr);
       row-gap: 4vh;
-      padding: 3/2 * $verticalPadding 0 0 0;
+      padding: $verticalPadding 0 0 0;
       span {
         font-size: 1.5rem;
       }
@@ -129,8 +139,41 @@ export default class Contact extends Vue {
   }
   @media (min-width: 768px) and (min-height: 500px) {
     .contact__container {
+      .logo {
+        margin-top: $verticalPadding / 2;
+        max-width: 60vw;
+      }
       h1 {
         font-size: 2.5rem;
+      }
+
+      .contact__items--container {
+        padding-top: $verticalPadding / 2;
+      }
+    }
+  }
+  @media (max-width: 850px) and (max-height: 450px) and (orientation: landscape) {
+    .contact__container {
+      .logo {
+        max-width: 35vw;
+      }
+    }
+  }
+  @media (max-width: 750px) and (max-height: 450px) and (orientation: landscape) {
+    .contact__container {
+      .logo {
+        max-width: 25vw;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) and (min-height: 500px) {
+    .contact__container {
+      .logo {
+        max-width: 15vw;
+      }
+      .contact__items--container .contact__items .contact__item a {
+        font-size: 1.5rem;
       }
     }
   }

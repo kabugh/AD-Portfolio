@@ -3,9 +3,7 @@
     <HeroPage
       title="Alicja Dębek"
       subTitle="o mnie"
-      description="When, while the lovely valley teems with vapour around me, and
-    the meridian sun strikes the upper surface of the impenetrable foliage of my
-    trees."
+      description="Fotografia nie jest związana z patrzeniem, lecz z czuciem. Jeżeli nie czujesz nic w tym, na co patrzysz, nigdy nie uda ci się sprawić, aby ludzie patrząc na twoje zdjęcia, cokolwiek odczuwali."
       image="about.jpg"
     />
     <section
@@ -36,27 +34,26 @@
       <div class="photography__container">
         <div class="title__container">
           <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
-            Photography is an art.
+            Fotografia jest sztuką.
           </h1>
           <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
-            It’s about finding extra-ordinary.
+            Chodzi w niej o poszukiwanie nadzwyczajnych rzeczy.
           </h1>
           <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
-            In an ordinary place.
+            W zwyczajnych miejscach.
           </h1>
           <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="600">
-            Fusce aliquam tincidunt hendrerit. Nunc tincidunt id velit sit amet
-            vestibulum. In venenatis tempus odio ut dictum. Curabitur ac nisl
-            molestie, facilisis nibh ac, facilisis ligula. Integer congue
-            malesuada eros congue varius. Sed malesuada dolor eget velit euismod
-            pretium. Etiam porttitor finibus pretium. Nam suscipit vel ligula at
-            dharetra.
+            Sesje fotograficzne to ciekawa przygoda, możliwość poznania siebie i
+            spojrzenia na siebie z innej strony. Po wszystkim zostanie pamiątka
+            na całe życie, bez względu na to, czy wrzucisz ją do internetu,
+            podarujesz ukochanej osobie, czy schowasz do szuflady, by wrócić do
+            niej za kilkadziesiąt lat.
           </p>
         </div>
         <div class="statistics__container">
           <div class="element" v-for="(item, i) in statistics" :key="i">
             <img
-              class="icon"
+              class="icon unselectable"
               :src="require(`@/assets/images/icons/${item.icon}`)"
               alt="icon"
             />
@@ -79,35 +76,35 @@ export default class AboutMe extends Vue {
   descs = [
     {
       image: "contact.jpg",
-      title: "About me",
+      title: "O Mnie",
       subtitle:
-        "Creative Photography Theme with Easy to Built Responsive Features",
+        "Nazywam się Alicja Dębek, a fotografia to jedna z moich największych pasji.",
       paragraph:
-        "Proin facilisis varius nunc. Curabitur eros risus, ultrices et dui ut, luctus accumsan nibh. Fusce convallis sapien placerat tellus susvehicula. Cras vitae diam ut justo elementum faucibus eget a diam."
+        "Z wykształcenia jestem fototechnikiem. Uwielbiam fotografować kochających się ludzi, można powiedzieć, że jestem „zakochana w miłości”.  Często wzruszam się na ślubach, na szczęście za aparatem nikt tego nie widzi."
     },
     {
       image: "forest.jpg",
-      title: "Visual Art",
+      title: "Zainteresowania",
       subtitle:
-        "Creative Photography Theme with Easy to Built Responsive Features",
+        "Prywatnie jestem introwertyczką, szczęśliwie zakochaną w pewnym artyście.",
       paragraph:
-        "Proin facilisis varius nunc. Curabitur eros risus, ultrices et dui ut, luctus accumsan nibh. Fusce convallis sapien placerat tellus susvehicula. Cras vitae diam ut justo elementum faucibus eget a diam."
+        "Gram w gry komputerowe, lubię literaturę fantastyczną, dinozaury i kulturę pogańską. Fascynują mnie zwierzęta w każdej postaci. Po godzinach natomiast działam w temacie fotografii alternatywnej, współpracując z modelkami, projektantami i makijażystami, i realizując wspólnie różne magiczne, niekiedy nieco mroczne pomysły."
     }
   ];
   statistics = [
     {
       icon: "photo.png",
-      number: "2139",
-      title: "Photo sessions",
+      number: "128",
+      title: "Sesji fotograficznych",
       description:
-        "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum."
+        "Sesja to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was, pełen emocji, gestów, po prostu Was"
     },
     {
       icon: "camera.png",
-      number: "3125",
-      title: "Photos",
+      number: "875",
+      title: "Cudownych ujęć",
       description:
-        "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum."
+        "Moje dotychczasowe osiągnięcia to między innymi publikacja w Italian Vogue czy w Dark Beauty Magazine."
     }
   ];
 }
@@ -163,7 +160,8 @@ export default class AboutMe extends Vue {
     width: 100%;
     color: black;
     .photography__container {
-      padding: $verticalPadding $horizontalPadding;
+      padding: $verticalPadding $horizontalPadding $verticalPadding / 2
+        $horizontalPadding;
       .title__container {
         text-align: center;
         h1 {
@@ -247,6 +245,14 @@ export default class AboutMe extends Vue {
       }
     }
   }
+  @media (max-width: 850px) and (max-height: 450px) and (orientation: landscape) {
+    .description__section {
+      min-height: 80vh;
+      .description__image {
+        display: none;
+      }
+    }
+  }
   @media (min-width: 1400px) and (orientation: landscape) {
     .description__section {
       &:nth-of-type(odd) {
@@ -259,13 +265,25 @@ export default class AboutMe extends Vue {
           padding-left: $horizontalPadding;
         }
       }
+      .description__container .description__wrapper {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h3 {
+          font-size: 1.5rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
     }
     .photography .photography__container {
       .title__container {
         padding: 0 $horizontalPadding * 1.25;
       }
       .statistics__container {
-        padding: $verticalPadding * 1.25 $horizontalPadding * 1.25;
+        padding: $verticalPadding * 1.25 $horizontalPadding * 1.25 0
+          $horizontalPadding * 1.25;
       }
     }
   }

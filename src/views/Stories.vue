@@ -2,10 +2,8 @@
   <section class="stories">
     <HeroPage
       title="Historie"
-      subTitle="creative collection"
-      description="When, while the lovely valley teems with vapour around me, and
-    the meridian sun strikes the upper surface of the impenetrable foliage of my
-    trees."
+      subTitle="niezapomniane wspomnienia"
+      description="Jeśli zobaczysz coś co cię poruszy, a następnie złapiesz to na zdjęciu, to zwyczajnie zatrzymasz ten moment na wieki."
       image="bg.jpg"
     />
     <!-- <section class="stories__container">
@@ -48,7 +46,7 @@ export default class Stories extends Vue {
       frontImage:
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3406-1024x683.jpg",
       description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
+        "Zaczęło się niewinnie – od romantycznej sesji ślubnej, z wiankiem na włosach i zachodzącym słońcem w tle. Ale prawdziwa magia pojawiła się po zmroku.",
       images: [
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1825-1024x683.jpg",
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2188-1024x683.jpg",
@@ -59,10 +57,10 @@ export default class Stories extends Vue {
       ]
     },
     {
-      name: "Test",
+      name: "Wesele",
       frontImage: "http://eterlight.pl/wp-content/uploads/2018/08/IMG_9374.jpg",
       description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, porro voluptate. Voluptas, quo excepturi. Quos fugiat neque adolorem.",
+        "Zaczęło się niewinnie – od romantycznej sesji ślubnej, z wiankiem na włosach i zachodzącym słońcem w tle. Ale prawdziwa magia pojawiła się po zmroku.",
       images: [
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg",
         "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg",

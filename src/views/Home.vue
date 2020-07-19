@@ -53,9 +53,9 @@
           <h1 data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
             Oferta
           </h1>
-          <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
+          <!-- <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
             Something cool to say here
-          </h2>
+          </h2> -->
         </div>
         <ul class="offer__items">
           <li
@@ -314,7 +314,7 @@ export default class Home extends Vue {
         padding: $verticalPadding / 2 0;
         margin: 0 auto;
         p {
-          font-size: 1rem;
+          font-size: 1.25rem;
           line-height: 2;
         }
       }
@@ -438,6 +438,15 @@ export default class Home extends Vue {
     }
   }
   @media (min-width: 1024px) and (min-height: 500px) {
+    .hero .slideshow__controls {
+      > div {
+        width: 48px;
+        height: 48px;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
     .offer .offer__container {
       .offer__items {
         grid-auto-rows: fit-content($verticalPadding);

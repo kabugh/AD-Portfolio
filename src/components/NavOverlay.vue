@@ -101,5 +101,23 @@ export default class NavOverlay extends Vue {
       }
     }
   }
+  @media (max-width: 850px) and (max-height: 450px) and (orientation: landscape) {
+    .overlay__wrapper .navItems .item {
+      font-size: 2.25rem;
+    }
+  }
+  @media (max-width: 750px) and (max-height: 450px) and (orientation: landscape) {
+    .overlay__wrapper .navItems .item {
+      font-size: 2rem;
+    }
+  }
+  @media (max-width: 650px) and (max-height: 450px) and (orientation: landscape) {
+    .overlay__wrapper .navItems {
+      row-gap: 4vh;
+      .item {
+        font-size: 1.75rem;
+      }
+    }
+  }
 }
 </style>

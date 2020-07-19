@@ -149,7 +149,7 @@ export default class Service extends Vue {
       ul {
         margin: $verticalPadding / 4 0;
         display: grid;
-        row-gap: $verticalPadding;
+        row-gap: $verticalPadding / 2;
       }
     }
   }
@@ -237,6 +237,16 @@ export default class Service extends Vue {
       padding: 3 / 2 * $verticalPadding $horizontalPadding * 5 / 2;
       .service__article {
         padding: $verticalPadding / 2 0;
+        h1 {
+          font-size: 2.75rem;
+        }
+        h2 {
+          font-size: 1.75rem;
+        }
+        p,
+        li {
+          font-size: 1.25rem;
+        }
       }
     }
   }

@@ -91,6 +91,7 @@ export default class HeroPage extends Vue {
     @include flex;
     flex-direction: column;
     padding: $verticalPadding $horizontalPadding;
+    text-align: center;
     h1 {
       font-size: 2rem;
       font-weight: 400;
@@ -102,7 +103,7 @@ export default class HeroPage extends Vue {
     }
     p {
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.25rem;
       font-weight: 300;
       max-width: 60vw;
     }
@@ -151,6 +152,18 @@ export default class HeroPage extends Vue {
     p {
       font-size: 1.25rem;
       max-width: 50vw;
+    }
+  }
+}
+@media (max-width: 850px) and (max-height: 450px) and (orientation: landscape) {
+  .hero {
+    .hero__container {
+      h1 {
+        font-size: 1.75rem;
+      }
+      p {
+        font-size: 1rem;
+      }
     }
   }
 }

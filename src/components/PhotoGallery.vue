@@ -129,14 +129,19 @@ export default class PhotoGallery extends Vue {
         padding: 4vmin;
         text-align: center;
         h1 {
-          font-size: 1rem;
+          font-size: 1.25rem;
           text-transform: capitalize;
           margin-bottom: 2vh;
         }
         p {
-          font-size: 0.75rem;
+          font-size: 0.875rem;
           line-height: 1.75;
         }
+      }
+    }
+    @media (min-width: 360px) {
+      .image__container .description__container p {
+        font-size: 1rem;
       }
     }
     @media (min-width: 768px) {
@@ -161,6 +166,16 @@ export default class PhotoGallery extends Vue {
         .description__container {
           font-size: 1.25rem;
           transform: translateY(1em);
+        }
+      }
+    }
+    @media (max-width: 850px) and (max-height: 450px) and (orientation: landscape) {
+      .image__container .description__container {
+        h1 {
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.875rem;
         }
       }
     }
@@ -195,6 +210,11 @@ export default class PhotoGallery extends Vue {
           font-size: 1rem;
         }
       }
+    }
+  }
+  @media (min-width: 1024px) {
+    &.col-3 .photoGallery__container .grid {
+      grid-template-columns: repeat(4, minmax(12rem, 1fr));
     }
   }
 }
