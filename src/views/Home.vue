@@ -367,7 +367,7 @@ export default class Home extends Vue {
           }
           .image__wrapper {
             width: 100%;
-            max-height: 80vh;
+            max-height: 100%;
             img {
               width: 100%;
               height: 100%;
@@ -502,7 +502,10 @@ export default class Home extends Vue {
   }
   @media (min-width: 1024px) and (min-height: 500px) and (hover: hover) and (pointer: fine) {
     .offer .offer__container .offer__items {
-      grid-auto-rows: minmax(auto, 60%);
+      grid-auto-rows: minmax(
+        auto,
+        60%
+      ); // this line is the cause of the item jump
       .offer__item {
         h1,
         hr {
@@ -524,20 +527,22 @@ export default class Home extends Vue {
           transition: all 1s cubic-bezier(0.65, 0, 0.35, 1);
           height: 0; // bad practice should be translateY
         }
-        &:hover .image__description_layer {
+        &:not(.description__container):hover .image__description_layer {
           visibility: visible;
           height: 100%;
         }
 
-        &:hover .description__container {
+        &:not(.description__container):hover .description__container {
           transform: translateY(0);
           opacity: 1;
+          visibility: visible;
         }
         .description__container {
           @include flex;
           transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
           transform: translateY(-2em);
           opacity: 0;
+          visibility: hidden;
           padding: 4vh;
           text-align: center;
           h1 {

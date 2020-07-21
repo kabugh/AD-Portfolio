@@ -220,20 +220,22 @@ nav {
           position: relative;
           &:hover {
             cursor: pointer;
-            &:after {
+          }
+          &:not(.icons__container) {
+            &:hover:after {
               width: 100%;
             }
-          }
-          &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0px;
-            background-color: white;
-            height: 0.1em;
-            margin-top: 0.8em;
-            transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-            width: 0;
+            &:after {
+              content: "";
+              display: block;
+              position: absolute;
+              left: 0px;
+              background-color: white;
+              height: 0.1em;
+              margin-top: 0.8em;
+              transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+              width: 0;
+            }
           }
           &.icons__container {
             display: grid;
