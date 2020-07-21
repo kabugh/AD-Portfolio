@@ -75,7 +75,7 @@ import HeroPage from "@/components/HeroPage.vue";
 export default class AboutMe extends Vue {
   descs = [
     {
-      image: "contact.jpg",
+      image: "about1.jpg",
       title: "O Mnie",
       subtitle:
         "Nazywam się Alicja Dębek, a fotografia to jedna z moich największych pasji.",
@@ -83,7 +83,7 @@ export default class AboutMe extends Vue {
         "Z wykształcenia jestem fototechnikiem. Uwielbiam fotografować kochających się ludzi, można powiedzieć, że jestem „zakochana w miłości”.  Często wzruszam się na ślubach, na szczęście za aparatem nikt tego nie widzi."
     },
     {
-      image: "forest.jpg",
+      image: "about2.jpg",
       title: "Zainteresowania",
       subtitle:
         "Prywatnie jestem introwertyczką, szczęśliwie zakochaną w pewnym artyście.",

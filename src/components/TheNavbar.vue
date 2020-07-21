@@ -19,7 +19,7 @@
         >
           Oferta
         </li>
-        <li class="item" @click="$router.push('/')" v-else>Home</li>
+        <li class="item" @click="$router.push('/')" v-else>Start</li>
         <li
           @click="$router.push(item.link)"
           class="item"
@@ -217,9 +217,23 @@ nav {
           white-space: nowrap;
           text-transform: capitalize;
           font-size: 1.25rem;
+          position: relative;
           &:hover {
-            color: #eeeeee;
             cursor: pointer;
+            &:after {
+              width: 100%;
+            }
+          }
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0px;
+            background-color: white;
+            height: 0.1em;
+            margin-top: 0.8em;
+            transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            width: 0;
           }
           &.icons__container {
             display: grid;

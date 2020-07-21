@@ -3,10 +3,10 @@
     <header class="hero">
       <vue-displacement-slideshow
         :images="slideShow.images"
-        :displacement="require('@/assets/images/displacement.jpg')"
-        :intensity="0.2"
-        :speedIn="1.5"
-        :speedOut="1.5"
+        :displacement="require('@/assets/images/displacement.png')"
+        :intensity="0.1"
+        :speedIn="1.4"
+        :speedOut="1.4"
         ease="expo.in"
         ref="slideshow"
         @animationEnd="nextTitle"
@@ -39,10 +39,14 @@
           class="paragraph__wrapper"
         >
           <p>
-            Nazywam się <span>Alicja Dębek</span> i zapraszam Cię do świata
-            fotografii naturalnej – czyli fotografii bez ustawiania, stresu i
-            udawania. Tutaj skupiamy się na szczerych emocjach, detalach i
-            klimacie budowania opowieści.
+            Cześć! Miło Cię widzieć na mojej stronie! Rozgość się, rozejrzyj, a
+            ja opowiem Ci o mojej pracy. Nazywam się Ala i z zawodu fotografuję
+            ludzi. To pasja i ogromny kawał życia. Zdjęcia, które robię,
+            określiłabym jako ciepłe i naturalne. Zamiast jaskrawych kolorów i
+            kontrastów, wolę delikatną zieleń i emocje. Ludzie mówią, że w pracy
+            potrafię zniknąć i sprawić, by zapomnieli, że są fotografowani.
+            Jeśli podoba Ci się taka wizja, napisz do mnie – stworzymy coś
+            pięknego!
           </p>
         </div>
       </div>
@@ -123,10 +127,10 @@ export default class Home extends Vue {
       require("@/assets/images/slideshow/5.jpg")
     ],
     titles: [
+      "Jagoda & Adriani",
       "Basia & Roman",
       "Emily & Luke",
       "Sesja Kobieca",
-      "Jagoda & Adriani",
       "Ola & Jacek"
     ]
   };
@@ -165,7 +169,7 @@ export default class Home extends Vue {
     {
       title: "Reportaż Ślubny",
       description: "test",
-      image: "slideshow/4.jpg",
+      image: "slideshow/1.jpg",
       orientation: "horizontal",
       article: [
         "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
@@ -173,6 +177,16 @@ export default class Home extends Vue {
         "Potrafię sfotografować Was tak, abyście nie czuli się „ustawieni”. Na sesji plenerowej macie przede wszystkim świetnie się bawić, a ja zajmę się chwytaniem Waszych najlepszych momentów.",
         "Moje zdjęcia mają specyficzny styl. Lubię minimalizm, detale, delikatne kolory, światłocienie, niedopowiedzenia. Warto zajrzeć do mojego portfolio lub na facebooka, by przekonać się, czy i Wam ten styl odpowiada",
         "Wszyscy lubią gratisy! U mnie dostaniecie darmową sesję narzeczeńską, pendrive’a z albumem lub drewnianym pudełkiem na odbitki."
+      ]
+    },
+    {
+      title: "Sesja we dwoje",
+      description: "test",
+      image: "girl.jpg",
+      orientation: "vertical",
+      article: [
+        "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
+        "Namiot w lesie, hamak o zachodzie słońca.."
       ]
     },
     {
@@ -190,10 +204,10 @@ export default class Home extends Vue {
       ]
     },
     {
-      title: "Sesja Lifestyle",
+      title: "Sesja Lifestyle / Rodzinna",
       description: "test",
-      image: "fire.jpg",
-      orientation: "vertical",
+      image: "lifestyle.jpg",
+      orientation: "horizontal",
       article: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
         "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
@@ -204,7 +218,7 @@ export default class Home extends Vue {
       ]
     },
     {
-      title: "Fotografia okolicznościowa",
+      title: "Reportaż okolicznościowy",
       description: "test",
       image: "slideshow/5.jpg",
       orientation: "horizontal",
@@ -271,7 +285,8 @@ export default class Home extends Vue {
       width: 100%;
       position: absolute;
       bottom: 0;
-      padding: $verticalPadding $horizontalPadding / 2;
+      padding: $verticalPadding $horizontalPadding / 2 $verticalPadding * 2
+        $horizontalPadding / 2;
       display: grid;
       grid-template-columns: auto 1fr auto;
       justify-items: center;
@@ -420,17 +435,26 @@ export default class Home extends Vue {
       }
       .offer__items {
         .offer__item {
-          max-width: 60%;
+          max-width: 50%;
           &.vertical {
             max-width: 35%;
             margin: 0 $horizontalPadding / 2;
+            margin-top: -30%;
+
             &:first-of-type {
               justify-self: start;
             }
-            &:nth-of-type(2n + 1) {
-              justify-self: end;
-              margin-top: -50%;
+
+            &:nth-of-type(even) {
+              margin-right: 0;
             }
+            &:nth-of-type(odd) {
+              margin-left: 0;
+            }
+          }
+          &:nth-of-type(2n + 2) {
+            justify-self: end;
+            margin-top: -30%;
           }
         }
       }
@@ -456,14 +480,6 @@ export default class Home extends Vue {
         row-gap: $verticalPadding * 2;
         .offer__item {
           max-width: 50%;
-          &.vertical {
-            &:nth-of-type(2n + 1) {
-              margin-top: -25%;
-            }
-            .image__wrapper {
-              max-width: 90%;
-            }
-          }
         }
       }
     }
@@ -488,11 +504,6 @@ export default class Home extends Vue {
     .offer .offer__container .offer__items {
       grid-auto-rows: minmax(auto, 60%);
       .offer__item {
-        &.vertical {
-          &:nth-of-type(2n + 1) {
-            margin-top: -50%;
-          }
-        }
         h1,
         hr {
           display: none;
@@ -541,7 +552,10 @@ export default class Home extends Vue {
   }
   @media (min-width: 1450px) and (min-height: 500px) {
     .offer .offer__container {
-      padding: $verticalPadding $horizontalPadding * 3 / 2;
+      padding: $verticalPadding $horizontalPadding;
+      .offer__items .offer__item.vertical {
+        margin-top: -20%;
+      }
     }
   }
 }

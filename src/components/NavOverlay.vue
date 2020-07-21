@@ -31,7 +31,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default class NavOverlay extends Vue {
   navItems = [
     {
-      title: "Home",
+      title: "Start",
       link: "/"
     },
     {

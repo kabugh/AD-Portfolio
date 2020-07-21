@@ -180,7 +180,7 @@ export default class PhotoGallery extends Vue {
       }
     }
     @media (min-width: 1024px) {
-      padding: $verticalPadding $horizontalPadding;
+      padding: $verticalPadding $horizontalPadding / 2;
       .grid {
         grid-template-columns: repeat(3, minmax(12rem, 1fr));
       }
