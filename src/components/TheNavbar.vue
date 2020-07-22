@@ -30,13 +30,26 @@
         </li>
         <li class="item" v-scroll-to="'.contact'">Kontakt</li>
         <li class="item icons__container">
-          <img
-            v-for="socialItem in socialsItems"
-            :key="socialItem.icon"
-            :src="require(`@/assets/images/icons/${socialItem.icon}`)"
-            :alt="socialItem.icon"
-            @click="navigateOutside(socialItem.link)"
-          />
+          <div
+            class="icon__wrapper"
+            @click="
+              navigateOutside('https://instagram.com/alicjadebek_fotografia')
+            "
+          >
+            <IconBase icon-name="instagram" :width="24" :height="24">
+              <InstaIcon />
+            </IconBase>
+          </div>
+          <div
+            class="icon__wrapper"
+            @click="
+              navigateOutside('https://www.facebook.com/alicjadebekfotografia/')
+            "
+          >
+            <IconBase icon-name="facebook" :width="24" :height="24">
+              <FBIcon />
+            </IconBase>
+          </div>
         </li>
       </ul>
       <div class="burger__wrapper">
@@ -67,8 +80,13 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import IconBase from "./IconBase.vue";
+import InstaIcon from "./icons/InstaIcon.vue";
+import FBIcon from "./icons/FBIcon.vue";
 
-@Component
+@Component({
+  components: { IconBase, InstaIcon, FBIcon }
+})
 export default class TheNavbar extends Vue {
   navItems = [
     {
@@ -78,17 +96,6 @@ export default class TheNavbar extends Vue {
     {
       title: "o mnie",
       link: "/o-mnie"
-    }
-  ];
-
-  socialsItems = [
-    {
-      icon: "insta_white.png",
-      link: "https://instagram.com/alicjadebek_fotografia"
-    },
-    {
-      icon: "fb_white.png",
-      link: "https://www.facebook.com/alicjadebekfotografia/"
     }
   ];
 
@@ -218,7 +225,7 @@ nav {
           text-transform: capitalize;
           font-size: 1.25rem;
           position: relative;
-          &:hover {
+          &:not(.icons__container):hover {
             cursor: pointer;
           }
           &:not(.icons__container) {
@@ -242,12 +249,15 @@ nav {
             grid-template-columns: repeat(2, minmax(1vw, 1fr));
             align-items: center;
             justify-items: center;
-          }
-          img {
-            width: 24px;
-            height: 24px;
-            &:hover {
-              cursor: pointer;
+            .icon__wrapper {
+              @include flex;
+              &:hover svg {
+                transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+                transform: scale(1.02);
+              }
+              svg:hover {
+                cursor: pointer;
+              }
             }
           }
         }

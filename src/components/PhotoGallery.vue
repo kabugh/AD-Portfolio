@@ -23,7 +23,7 @@
         >
           <img
             :src="item.frontImage"
-            :alt="item.name"
+            :alt="item.title"
             class="image"
             v-if="!displayImageOnly"
           />
@@ -33,7 +33,7 @@
             :class="{ light: displayImageOnly }"
           >
             <div class="description__container" v-if="!displayImageOnly">
-              <h1>{{ item.name }}</h1>
+              <h1>{{ item.title }}</h1>
               <p>
                 {{ item.description }}
               </p>
@@ -61,7 +61,7 @@ export default class PhotoGallery extends Vue {
     if (!this.$props.displayImageOnly)
       this.$router.push({
         name: this.$props.routeComponentName,
-        params: { name: convertToSlug(item.name), passedItem: item }
+        params: { name: convertToSlug(item.title), passedItem: item }
       });
   }
 }
