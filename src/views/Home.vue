@@ -10,8 +10,7 @@
         ease="expo.in"
         ref="slideshow"
         @animationEnd="nextTitle"
-      >
-      </vue-displacement-slideshow>
+      ></vue-displacement-slideshow>
       <div
         class="slideshow__controls"
         data-aos="fade-up"
@@ -20,9 +19,7 @@
       >
         <div class="prev__control" @click="$refs.slideshow.previous()"></div>
         <transition name="slide-fade" mode="out-in">
-          <h2 :key="currentTitle" ref="currentTitle">
-            {{ currentTitle }}
-          </h2>
+          <h2 :key="currentTitle" ref="currentTitle">{{ currentTitle }}</h2>
         </transition>
         <div class="next__control" @click="$refs.slideshow.next()"></div>
       </div>
@@ -57,9 +54,6 @@
           <h1 data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
             Oferta
           </h1>
-          <!-- <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
-            Something cool to say here
-          </h2> -->
         </div>
         <ul class="offer__items">
           <li
@@ -71,7 +65,7 @@
           >
             <div class="image__wrapper">
               <img
-                :src="require(`@/assets/images/${item.image}`)"
+                :src="item.image"
                 :alt="item.title"
                 class="unselectable"
                 data-aos="fade-up"
@@ -134,102 +128,76 @@ export default class Home extends Vue {
       "Ola & Jacek"
     ]
   };
-  images = [
-    {
-      url:
-        "https://images.unsplash.com/photo-1594725224909-0e66d59ed0f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-      name: "Movements",
-      description:
-        "Lorem ipsum dolor sit amet enim. Etiam ullamcorper., maleicies porta urna. Vestibulusis."
-    },
-    {
-      url:
-        "https://images.unsplash.com/photo-1594725224909-0e66d59ed0f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-      name: "Collaborative",
-      description:
-        "Lorem ipsum dolor sit amet enim. Etiam ullamcorper., maleicies porta urna. Vestibulusis."
-    },
-    {
-      url:
-        "https://images.unsplash.com/photo-1594725224909-0e66d59ed0f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-      name: "Storytelling",
-      description:
-        "Lorem ipsum dolor sit amet enim. Etiam ullamcorper., maleicies porta urna. Vestibulusis."
-    },
-    {
-      url:
-        "https://images.unsplash.com/photo-1594725224909-0e66d59ed0f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-      name: "Theory of change",
-      description:
-        "Lorem ipsum dolor sit amet enim. Etiam ullamcorper., maleicies porta urna. Vestibulusis."
-    }
-  ];
 
   offerItems = [
     {
       title: "Reportaż Ślubny",
-      description: "test",
-      image: "slideshow/1.jpg",
+      image: "http://eterlight.pl/wp-content/uploads/2019/09/3-1024x683.jpg",
       orientation: "horizontal",
-      article: [
+      description: [
         "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
         "Nie fotografuję tylko kluczowych momentów, szukam detali, ciekawych sytuacji, gestów, spojrzeń, wszystkiego, co składa się na klimat tego wyjątkowego dnia.",
         "Potrafię sfotografować Was tak, abyście nie czuli się „ustawieni”. Na sesji plenerowej macie przede wszystkim świetnie się bawić, a ja zajmę się chwytaniem Waszych najlepszych momentów.",
         "Moje zdjęcia mają specyficzny styl. Lubię minimalizm, detale, delikatne kolory, światłocienie, niedopowiedzenia. Warto zajrzeć do mojego portfolio lub na facebooka, by przekonać się, czy i Wam ten styl odpowiada",
         "Wszyscy lubią gratisy! U mnie dostaniecie darmową sesję narzeczeńską, pendrive’a z albumem lub drewnianym pudełkiem na odbitki."
-      ]
+      ],
+      slug: "reportaz-slubny"
     },
     {
       title: "Sesja we dwoje",
-      description: "test",
-      image: "girl.jpg",
+      image:
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3421-2-683x1024.jpg",
       orientation: "vertical",
-      article: [
+      description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
         "Namiot w lesie, hamak o zachodzie słońca.."
-      ]
+      ],
+      slug: "sesja-we-dwoje"
     },
     {
       title: "Sesja Kobieca",
-      description: "test",
-      image: "girl.jpg",
+      image:
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3421-2-683x1024.jpg",
       orientation: "vertical",
-      article: [
+      description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
         "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
         "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
         "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
         "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
         "Tylko Wy i Wasza opowieść."
-      ]
+      ],
+      slug: "sesja-kobieca"
     },
     {
       title: "Sesja Lifestyle / Rodzinna",
-      description: "test",
-      image: "lifestyle.jpg",
+      image:
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2220-1024x683.jpg",
       orientation: "horizontal",
-      article: [
+      description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
         "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
         "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
         "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
         "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
         "Tylko Wy i Wasza opowieść."
-      ]
+      ],
+      slug: "sesja-lifestyle-rodzinna"
     },
     {
       title: "Reportaż okolicznościowy",
-      description: "test",
-      image: "slideshow/5.jpg",
+      image:
+        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2225-1024x683.jpg",
       orientation: "horizontal",
-      article: [
+      description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
         "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
         "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
         "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
         "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
         "Tylko Wy i Wasza opowieść."
-      ]
+      ],
+      slig: "reportaz-okolicznosciowy"
     }
   ];
 

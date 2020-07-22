@@ -1,37 +1,49 @@
 <template>
   <section class="story">
     <header
+      v-if="currentStory"
       class="hero"
       :style="{
-        backgroundImage: `url(${passedItem.frontImage})`
+        backgroundImage: `url(${currentStory.frontImage})`
       }"
       ref="header"
     >
       <div class="hero__container">
-        <h1 ref="title">{{ passedItem.name }}</h1>
+        <h1 ref="title">{{ currentStory.title }}</h1>
       </div>
     </header>
-    <article class="story__container" ref="article">
+    <header class="hero" v-else></header>
+    <article class="story__container" v-if="currentStory" ref="article">
       <section
         class="block__container"
-        v-for="(element, index) in storyData"
+        v-for="(element, index) in currentStory.pages"
         :key="index"
       >
         <h1 data-aos="fade-up" :data-aos-delay="100 + index * 100">
-          {{ element.title }}
+          {{ element.fields.pageTitle }}
         </h1>
-        <h3 data-aos="fade-up" data-aos-delay="200">{{ element.lead }}</h3>
-        <p data-aos="fade-up" data-aos-delay="300">{{ element.paragraph }}</p>
+        <h3 data-aos="fade-up" data-aos-delay="200">
+          {{ element.fields.lead }}
+        </h3>
+        <p data-aos="fade-up" data-aos-delay="300">
+          {{ element.fields.description }}
+        </p>
         <div data-aos="fade-up" data-aos-delay="400" class="image__wrapper">
-          <img :src="element.image" :alt="element.title" class="unselectable" />
+          <img
+            :src="element.fields.image"
+            :alt="element.fields.pageTitle"
+            class="unselectable"
+          />
         </div>
       </section>
     </article>
     <PhotoGallery
-      :images="passedItem.images"
+      v-if="this.currentStory && Object.values(this.currentStory).length > 0"
+      :images="currentStory.gallery.images"
       :displayImageOnly="true"
       :zoomedPhotos="true"
     />
+    <div v-else></div>
   </section>
 </template>
 <script lang="ts">
@@ -44,14 +56,34 @@ import { TimelineLite } from "gsap";
   components: { HeroPage, PhotoGallery }
 })
 export default class Story extends Vue {
-  @Prop({ required: true }) passedItem!: {
+  @Prop() passedItem!: {
     name: string;
     description: string;
     frontImage: string;
     images: string[];
   };
 
-  mounted() {
+  async mounted() {
+    if (this.$props.passedItem !== undefined) {
+      if (this.$props.passedItem.slug === this.$route.params.name) {
+        this.currentStory = this.$props.passedItem;
+        this.startAnimation();
+      }
+    } else {
+      await this.$store.dispatch("fetchStory", this.$route.params.name);
+      this.startAnimation();
+    }
+  }
+
+  set currentStory(value) {
+    this.$store.commit("setCurrentStory", value);
+  }
+
+  get currentStory() {
+    return this.$store.getters.currentStory;
+  }
+
+  startAnimation() {
     const header = this.$refs.header;
     const title = this.$refs.title;
     const article = this.$refs.article;
@@ -70,7 +102,8 @@ export default class Story extends Vue {
           duration: 1.5,
           opacity: 0,
           ease: "power4",
-          y: -100
+          y: -100,
+          delay: 0.5
         },
         "-=1"
       )
@@ -88,26 +121,26 @@ export default class Story extends Vue {
       .to(article, { y: 0 });
   }
 
-  storyData = [
-    {
-      title: "Przygotowania",
-      lead:
-        "Przypadkowy opis.. - bohaterowie poniższej historii są miłośnikami zwierząt. Na zdjęciach możemy zobaczyć nie tylko przygotowania do ślubu w okolicach stadniny, ale także ich fantastyczne psy. Na twarzach zakochanych w dniu uroczystości nie zauważycie nawet nutki stresu – było za to dużo uśmiechu i romantycznych spojrzeń.",
-      paragraph:
-        "Wyjątkowy, włoski klimat tego przepięknego obiektu sprawia, że czas zatrzymuje się tu w miejscu. Zarówno wnętrze rustykalnej sali weselnej, jak i otoczenie oazy wręcz powala na kolana. Każdy detal jest tu dopracowany w najmniejszym stopniu. Surowe cegły, drewno, przepiękny wystrój oraz otoczenie natury sprawiają, że niezwykły dzień ślubu staje się jeszcze piękniejszy. W Oazie panuje bardzo spokojny, sielankowy klimat. ",
-      image:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2660-1024x683.jpg"
-    },
-    {
-      title: "Dzień pierwszy",
-      lead:
-        "Przypadkowy opis.. - bohaterowie poniższej historii są miłośnikami zwierząt. Na zdjęciach możemy zobaczyć nie tylko przygotowania do ślubu w okolicach stadniny, ale także ich fantastyczne psy. Na twarzach zakochanych w dniu uroczystości nie zauważycie nawet nutki stresu – było za to dużo uśmiechu i romantycznych spojrzeń.",
-      paragraph:
-        "Wyjątkowy, włoski klimat tego przepięknego obiektu sprawia, że czas zatrzymuje się tu w miejscu. Zarówno wnętrze rustykalnej sali weselnej, jak i otoczenie oazy wręcz powala na kolana. Każdy detal jest tu dopracowany w najmniejszym stopniu. Surowe cegły, drewno, przepiękny wystrój oraz otoczenie natury sprawiają, że niezwykły dzień ślubu staje się jeszcze piękniejszy. W Oazie panuje bardzo spokojny, sielankowy klimat. ",
-      image:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3213-1024x683.jpg"
-    }
-  ];
+  // storyData = [
+  //   {
+  //     title: "Przygotowania",
+  //     lead:
+  //       "Przypadkowy opis.. - bohaterowie poniższej historii są miłośnikami zwierząt. Na zdjęciach możemy zobaczyć nie tylko przygotowania do ślubu w okolicach stadniny, ale także ich fantastyczne psy. Na twarzach zakochanych w dniu uroczystości nie zauważycie nawet nutki stresu – było za to dużo uśmiechu i romantycznych spojrzeń.",
+  //     paragraph:
+  //       "Wyjątkowy, włoski klimat tego przepięknego obiektu sprawia, że czas zatrzymuje się tu w miejscu. Zarówno wnętrze rustykalnej sali weselnej, jak i otoczenie oazy wręcz powala na kolana. Każdy detal jest tu dopracowany w najmniejszym stopniu. Surowe cegły, drewno, przepiękny wystrój oraz otoczenie natury sprawiają, że niezwykły dzień ślubu staje się jeszcze piękniejszy. W Oazie panuje bardzo spokojny, sielankowy klimat. ",
+  //     image:
+  //       "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2660-1024x683.jpg"
+  //   },
+  //   {
+  //     title: "Dzień pierwszy",
+  //     lead:
+  //       "Przypadkowy opis.. - bohaterowie poniższej historii są miłośnikami zwierząt. Na zdjęciach możemy zobaczyć nie tylko przygotowania do ślubu w okolicach stadniny, ale także ich fantastyczne psy. Na twarzach zakochanych w dniu uroczystości nie zauważycie nawet nutki stresu – było za to dużo uśmiechu i romantycznych spojrzeń.",
+  //     paragraph:
+  //       "Wyjątkowy, włoski klimat tego przepięknego obiektu sprawia, że czas zatrzymuje się tu w miejscu. Zarówno wnętrze rustykalnej sali weselnej, jak i otoczenie oazy wręcz powala na kolana. Każdy detal jest tu dopracowany w najmniejszym stopniu. Surowe cegły, drewno, przepiękny wystrój oraz otoczenie natury sprawiają, że niezwykły dzień ślubu staje się jeszcze piękniejszy. W Oazie panuje bardzo spokojny, sielankowy klimat. ",
+  //     image:
+  //       "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3213-1024x683.jpg"
+  //   }
+  // ];
 }
 </script>
 <style lang="scss">

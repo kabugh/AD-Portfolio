@@ -11,10 +11,10 @@ import { gsap, TimelineLite } from "gsap";
 Vue.use(VueScrollTo, {
   easing: [0.86, 0, 0.07, 1],
   duration: 1500,
-  onStart: function (element: any) {
-    if(store.state.isNavOpen)
+  onStart: () => {
+    if(store.getters.isNavOpen)
       store.commit("setNav", false);
-  },
+  }
 });
 
 AOS.init({

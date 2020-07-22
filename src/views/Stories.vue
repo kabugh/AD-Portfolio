@@ -6,27 +6,15 @@
       description="Jeśli zobaczysz coś co cię poruszy, a następnie złapiesz to na zdjęciu, to zwyczajnie zatrzymasz ten moment na wieki."
       image="bg.jpg"
     />
-    <!-- <section class="stories__container">
-      <div class="story" v-for="(story, i) in stories" :key="i">
-        <img
-          class="story__image"
-          :src="require(`@/assets/images/${story.photo}`)"
-          alt="story image"
-        />
-        <h1>{{ story.title }}</h1>
-        <p>
-          {{ story.description }}
-        </p>
-        <button type="button" class="dark">Czytaj dalej</button>
-      </div>
-    </section> -->
     <section class="content__container">
       <PhotoGallery
+        v-if="stories.length > 0"
         :images="stories"
         routeComponentName="story"
         :displayImageOnly="false"
         :zoomedPhotos="false"
       />
+      <div class="loading" v-else>loading..</div>
     </section>
   </section>
 </template>
@@ -40,46 +28,17 @@ import PhotoGallery from "@/components/PhotoGallery.vue";
   components: { HeroPage, PhotoGallery }
 })
 export default class Stories extends Vue {
-  stories = [
-    {
-      name: "Ślub humanistyczny Jagody i Adriani’ego",
-      frontImage:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3406-1024x683.jpg",
-      description:
-        "Zaczęło się niewinnie – od romantycznej sesji ślubnej, z wiankiem na włosach i zachodzącym słońcem w tle. Ale prawdziwa magia pojawiła się po zmroku.",
-      images: [
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1825-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2188-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2340-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3294-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2220-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1976-1024x683.jpg"
-      ]
-    },
-    {
-      name: "Wesele",
-      frontImage: "http://eterlight.pl/wp-content/uploads/2018/08/IMG_9374.jpg",
-      description:
-        "Zaczęło się niewinnie – od romantycznej sesji ślubnej, z wiankiem na włosach i zachodzącym słońcem w tle. Ale prawdziwa magia pojawiła się po zmroku.",
-      images: [
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2329-683x1024.jpg"
-      ]
-    },
-    {
-      name: "Opowieść",
-      frontImage:
-        "http://eterlight.pl/wp-content/uploads/2017/07/IMG_4126-1024x683.jpg",
-      description:
-        "Jest i pierwsza pełna opowieść ślubna! A zaczęło się od tego, że dwoje zakochanych ludzi postanowiło się pobrać, a ich szczęście promieniało tak mocno, że mogłoby zarazić cały Milicz",
-      images: [
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1976-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2212-1024x683.jpg",
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2225-1024x683.jpg"
-      ]
-    }
-  ];
+  created() {
+    this.$store.dispatch("fetchStories");
+  }
+
+  get loading() {
+    return this.$store.getters.loading;
+  }
+
+  get stories() {
+    return this.$store.getters.stories;
+  }
 }
 </script>
 <style lang="scss">

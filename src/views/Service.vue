@@ -1,20 +1,17 @@
 <template>
   <section class="service">
-    <div class="service__container">
-      <div class="image__container" :class="orientationClass(service)">
+    <div class="service__container" v-if="currentService">
+      <div class="image__container" :class="orientationClass(currentService)">
         <div
-          :style="{
-            backgroundImage:
-              'url(' + require(`@/assets/images/${service.image}`) + ')'
-          }"
-          :alt="service.title"
+          :style="{ backgroundImage: `url(${this.currentService.image}` }"
+          :alt="currentService.title"
           class="image unselectable"
           ref="image"
         ></div>
         <div class="overlay" ref="overlay"></div>
       </div>
       <article class="service__article">
-        <h1 ref="title">{{ service.title }}</h1>
+        <h1 ref="title">{{ currentService.title }}</h1>
         <div class="article__content" ref="content">
           <p>
             Uwielbiam fotografować kochających się ludzi, można powiedzieć, że
@@ -22,14 +19,18 @@
             moich klientów, na szczęście za aparatem nikt tego nie widzi.
           </p>
           <h2>Co charakteryzuje moją pracę:</h2>
-          <ul>
-            <li v-for="(item, i) in service.article" :key="i">
+          <ul v-if="Array.isArray(currentService.description)">
+            <li v-for="(item, i) in currentService.description" :key="i">
               {{ item }}
             </li>
+          </ul>
+          <ul v-else>
+            <li>{{ currentService.description }}</li>
           </ul>
         </div>
       </article>
     </div>
+    <div class="service__container" v-else></div>
     <div class="back__button" @click="$router.go(-1)" ref="arrow"></div>
   </section>
 </template>
@@ -41,7 +42,38 @@ import { TimelineLite } from "gsap";
   props: ["service"]
 })
 export default class Service extends Vue {
+  overlayDelay = false;
+
   mounted() {
+    if (this.$props.service !== undefined) {
+      if (this.$props.service.slug === this.$route.params.name) {
+        this.currentService = this.$props.service;
+        this.overlayDelay = false;
+        this.startAnimation(this.overlayDelay);
+      }
+    } else if (
+      this.$props.service === undefined &&
+      this.currentService.image !== undefined
+    ) {
+      this.overlayDelay = false;
+      this.startAnimation(this.overlayDelay);
+    } else {
+      this.overlayDelay = true;
+      this.$store
+        .dispatch("fetchService", this.$route.params.name)
+        .then(() => this.startAnimation(this.overlayDelay));
+    }
+  }
+
+  set currentService(value) {
+    this.$store.commit("setCurrentService", value);
+  }
+
+  get currentService() {
+    return this.$store.getters.currentService;
+  }
+
+  startAnimation(overlayDelay: boolean) {
     const image = this.$refs.image;
     const overlay = this.$refs.overlay;
     const title = this.$refs.title;
@@ -51,16 +83,18 @@ export default class Service extends Vue {
     const timeline1 = new TimelineLite();
     const timeline2 = new TimelineLite();
 
+    const initialDelay = overlayDelay ? 1.5 : 0;
     timeline1.from(overlay, {
       duration: 1.5,
       opacity: 0,
       ease: "power4",
-      y: -100
+      y: -100,
+      delay: initialDelay
     });
     timeline2
       .from(image, {
         duration: 2.5,
-        delay: 1,
+        delay: 1 + initialDelay,
         opacity: 0,
         ease: "power4",
         y: -100
