@@ -16,10 +16,7 @@ import PhotoGallery from "./PhotoGallery.vue";
 })
 export default class Instagram extends Vue {
   images = [
-    "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A1825-1024x683.jpg",
-    "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2188-1024x683.jpg",
-    "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2340-1024x683.jpg",
-    "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3294-1024x683.jpg"
+    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
   ];
 }
 </script>
