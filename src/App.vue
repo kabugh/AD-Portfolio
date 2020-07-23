@@ -45,7 +45,6 @@ export default class App extends Vue {
   }
 
   created() {
-    console.log(process.env.appId);
     /* eslint-disable @typescript-eslint/no-explicit-any */
     (window as any).fbAsyncInit = function() {
       /* eslint-disable prefer-const */
