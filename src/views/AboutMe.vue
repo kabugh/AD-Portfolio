@@ -7,25 +7,24 @@
       image="about.jpg"
     />
     <section
-      v-for="(desc, index) in descs"
+      v-for="(desc, index) in aboutMe"
       :key="index"
       class="description__section content__container"
     >
       <div
         class="description__image"
         :style="{
-          backgroundImage:
-            'url(' + require(`@/assets/images/${desc.image}`) + ')'
+          backgroundImage: `url(${desc.image})`
         }"
       ></div>
       <div class="description__container">
         <div class="description__wrapper">
           <h1 data-aos="fade-down" data-aos-duration="500">{{ desc.title }}</h1>
           <h3 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
-            {{ desc.subtitle }}
+            {{ desc.subTitle }}
           </h3>
           <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
-            {{ desc.paragraph }}
+            {{ desc.description }}
           </p>
         </div>
       </div>
@@ -73,21 +72,29 @@ import HeroPage from "@/components/HeroPage.vue";
   components: { HeroPage }
 })
 export default class AboutMe extends Vue {
-  descs = [
+  created() {
+    this.$store.dispatch("fetchAboutMe");
+  }
+
+  get aboutMe() {
+    return this.$store.getters.aboutMe;
+  }
+
+  desca = [
     {
       image: "about1.jpg",
       title: "O Mnie",
-      subtitle:
+      subTitle:
         "Nazywam się Alicja Dębek, a fotografia to jedna z moich największych pasji.",
-      paragraph:
+      description:
         "Z wykształcenia jestem fototechnikiem. Uwielbiam fotografować kochających się ludzi, można powiedzieć, że jestem „zakochana w miłości”.  Często wzruszam się na ślubach, na szczęście za aparatem nikt tego nie widzi."
     },
     {
       image: "about2.jpg",
       title: "Zainteresowania",
-      subtitle:
+      subTitle:
         "Prywatnie jestem introwertyczką, szczęśliwie zakochaną w pewnym artyście.",
-      paragraph:
+      description:
         "Gram w gry komputerowe, lubię literaturę fantastyczną, dinozaury i kulturę pogańską. Fascynują mnie zwierzęta w każdej postaci. Po godzinach natomiast działam w temacie fotografii alternatywnej, współpracując z modelkami, projektantami i makijażystami, i realizując wspólnie różne magiczne, niekiedy nieco mroczne pomysły."
     }
   ];
