@@ -53,7 +53,7 @@ export default class App extends Vue {
       // @ts-ignore
       // eslint-disable-next-line no-undef
       FB.init({
-        appId: process.env.appId,
+        appId: "1683543045127708",
         autoLogAppEvents: true,
         xfbml: true,
         version: "v7.0"
