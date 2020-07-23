@@ -132,7 +132,8 @@ export default class Home extends Vue {
   offerItems = [
     {
       title: "Reportaż Ślubny",
-      image: "http://eterlight.pl/wp-content/uploads/2019/09/3-1024x683.jpg",
+      image:
+        "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       orientation: "horizontal",
       description: [
         "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
@@ -146,7 +147,7 @@ export default class Home extends Vue {
     {
       title: "Sesja we dwoje",
       image:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3421-2-683x1024.jpg",
+        "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       orientation: "vertical",
       description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
@@ -157,7 +158,7 @@ export default class Home extends Vue {
     {
       title: "Sesja Kobieca",
       image:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3421-2-683x1024.jpg",
+        "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       orientation: "vertical",
       description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
@@ -172,7 +173,7 @@ export default class Home extends Vue {
     {
       title: "Sesja Lifestyle / Rodzinna",
       image:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2220-1024x683.jpg",
+        "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       orientation: "horizontal",
       description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
@@ -187,7 +188,7 @@ export default class Home extends Vue {
     {
       title: "Reportaż okolicznościowy",
       image:
-        "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2225-1024x683.jpg",
+        "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       orientation: "horizontal",
       description: [
         "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",

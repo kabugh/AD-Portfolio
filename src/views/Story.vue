@@ -120,27 +120,6 @@ export default class Story extends Vue {
       )
       .to(article, { y: 0 });
   }
-
-  // storyData = [
-  //   {
-  //     title: "Przygotowania",
-  //     lead:
-  //       "Przypadkowy opis.. - bohaterowie poniższej historii są miłośnikami zwierząt. Na zdjęciach możemy zobaczyć nie tylko przygotowania do ślubu w okolicach stadniny, ale także ich fantastyczne psy. Na twarzach zakochanych w dniu uroczystości nie zauważycie nawet nutki stresu – było za to dużo uśmiechu i romantycznych spojrzeń.",
-  //     paragraph:
-  //       "Wyjątkowy, włoski klimat tego przepięknego obiektu sprawia, że czas zatrzymuje się tu w miejscu. Zarówno wnętrze rustykalnej sali weselnej, jak i otoczenie oazy wręcz powala na kolana. Każdy detal jest tu dopracowany w najmniejszym stopniu. Surowe cegły, drewno, przepiękny wystrój oraz otoczenie natury sprawiają, że niezwykły dzień ślubu staje się jeszcze piękniejszy. W Oazie panuje bardzo spokojny, sielankowy klimat. ",
-  //     image:
-  //       "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A2660-1024x683.jpg"
-  //   },
-  //   {
-  //     title: "Dzień pierwszy",
-  //     lead:
-  //       "Przypadkowy opis.. - bohaterowie poniższej historii są miłośnikami zwierząt. Na zdjęciach możemy zobaczyć nie tylko przygotowania do ślubu w okolicach stadniny, ale także ich fantastyczne psy. Na twarzach zakochanych w dniu uroczystości nie zauważycie nawet nutki stresu – było za to dużo uśmiechu i romantycznych spojrzeń.",
-  //     paragraph:
-  //       "Wyjątkowy, włoski klimat tego przepięknego obiektu sprawia, że czas zatrzymuje się tu w miejscu. Zarówno wnętrze rustykalnej sali weselnej, jak i otoczenie oazy wręcz powala na kolana. Każdy detal jest tu dopracowany w najmniejszym stopniu. Surowe cegły, drewno, przepiękny wystrój oraz otoczenie natury sprawiają, że niezwykły dzień ślubu staje się jeszcze piękniejszy. W Oazie panuje bardzo spokojny, sielankowy klimat. ",
-  //     image:
-  //       "http://eterlight.pl/wp-content/uploads/2019/09/BJ0A3213-1024x683.jpg"
-  //   }
-  // ];
 }
 </script>
 <style lang="scss">
