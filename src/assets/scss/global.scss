@@ -109,3 +109,18 @@ hr.title__line {
   background-color: black;
   margin: 0;
 }
+
+#fb-root
+  > div.fb_dialog.fb_dialog_advanced.fb_customer_chat_bubble_animated_no_badge.fb_customer_chat_bubble_pop_in,
+#fb-root
+  > div.fb-customerchat.fb_invisible_flow.fb_iframe_widget
+  > span
+  > iframe {
+  z-index: 98 !important;
+}
+.fb_dialog {
+  display: none;
+}
+.fb_dialog.visible {
+  display: block;
+}

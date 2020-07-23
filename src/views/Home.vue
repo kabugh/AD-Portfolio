@@ -197,7 +197,7 @@ export default class Home extends Vue {
         "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
         "Tylko Wy i Wasza opowieść."
       ],
-      slig: "reportaz-okolicznosciowy"
+      slug: "reportaz-okolicznosciowy"
     }
   ];
 

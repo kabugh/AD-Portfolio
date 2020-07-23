@@ -19,4 +19,5 @@ export interface AboutMeDescription {
   title: string;
   subTitle: string;
   description: string;
+  image: string;
 }

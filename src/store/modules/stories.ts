@@ -44,7 +44,7 @@ const actions = {
         })
         .then((entries: { items: any[] }) => {
           const stories = entries.items[0].fields.stories.map((a: any) => a.fields);
-          commit('setStories', stories);
+          commit("setStories", stories);
           commit("setLoading", false);
         });
     } else {

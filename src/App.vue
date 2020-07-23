@@ -7,6 +7,7 @@
     </transition>
     <router-view />
     <Contact />
+    <Messenger />
   </div>
 </template>
 <script lang="ts">
@@ -14,11 +15,12 @@ import { Vue, Watch, Component } from "vue-property-decorator";
 import LoadingOverlay from "./components/LoadingOverlay.vue";
 import TheNavbar from "./components/TheNavbar.vue";
 import NavOverlay from "./components/NavOverlay.vue";
+import Messenger from "./components/Messenger.vue";
 
 import Contact from "./components/Contact.vue";
 
 @Component({
-  components: { LoadingOverlay, TheNavbar, NavOverlay, Contact }
+  components: { LoadingOverlay, TheNavbar, NavOverlay, Messenger, Contact }
 })
 export default class App extends Vue {
   get isNavOpen(): boolean {
@@ -33,6 +35,7 @@ export default class App extends Vue {
   }
 }
 </script>
+
 <style lang="scss">
 @import "@/assets/scss/global.scss";
 </style>
