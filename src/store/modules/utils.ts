@@ -1,7 +1,7 @@
 const state = {
   isNavOpen: false,
   loading: false,
-  error: null,
+  error: null
 };
 
 const mutations = {
@@ -16,7 +16,7 @@ const mutations = {
   },
   clearError(state: { error: null }) {
     state.error = null;
-  },
+  }
 };
 
 const getters = {
@@ -28,11 +28,11 @@ const getters = {
   },
   error(state: { error: string }) {
     return state.error;
-  },
+  }
 };
 
 export default {
   state,
   mutations,
-  getters,
+  getters
 };

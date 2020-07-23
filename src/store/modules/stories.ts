@@ -4,7 +4,7 @@ const contentful = require("contentful");
 
 const client = contentful.createClient({
   space: process.env.VUE_APP_space,
-  accessToken: process.env.VUE_APP_accessToken,
+  accessToken: process.env.VUE_APP_accessToken
 });
 
 const state = {
@@ -25,7 +25,7 @@ const getters = {
   stories(state: { stories: any }) {
     return state.stories;
   },
-  currentStory(state: { currentStory: Story}) {
+  currentStory(state: { currentStory: Story }) {
     return state.currentStory;
   }
 };
@@ -43,7 +43,9 @@ const actions = {
           include: 2 // specified level of references, links
         })
         .then((entries: { items: any[] }) => {
-          const stories = entries.items[0].fields.stories.map((a: any) => a.fields);
+          const stories = entries.items[0].fields.stories.map(
+            (a: any) => a.fields
+          );
           commit("setStories", stories);
           commit("setLoading", false);
         });
@@ -66,15 +68,17 @@ const actions = {
           commit("setLoading", false);
         });
     } else {
-      const foundStory = state.stories.find((story: Story) => story.slug === slug);
+      const foundStory = state.stories.find(
+        (story: Story) => story.slug === slug
+      );
       commit("setCurrentStory", foundStory);
     }
-  },
+  }
 };
 
 export default {
   state,
   mutations,
   getters,
-  actions,
+  actions
 };

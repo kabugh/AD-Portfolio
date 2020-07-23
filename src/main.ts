@@ -12,8 +12,7 @@ Vue.use(VueScrollTo, {
   easing: [0.86, 0, 0.07, 1],
   duration: 1500,
   onStart: () => {
-    if(store.getters.isNavOpen)
-      store.commit("setNav", false);
+    if (store.getters.isNavOpen) store.commit("setNav", false);
   }
 });
 

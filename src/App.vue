@@ -7,7 +7,18 @@
     </transition>
     <router-view />
     <Contact />
-    <Messenger />
+    <div id="fb-root"></div>
+    <div
+      class="fb-customerchat"
+      attribution="setup_tool"
+      page_id="168432936633504"
+      theme_color="#a695c7"
+      logged_in_greeting="Hej, jak mogę pomóc? 😇"
+      logged_out_greeting="Hej, jak mogę pomóc? 😇"
+      greeting_dialog_display="fade"
+      greeting_dialog_delay="60"
+      minimalised="true"
+    ></div>
   </div>
 </template>
 <script lang="ts">
@@ -15,12 +26,11 @@ import { Vue, Watch, Component } from "vue-property-decorator";
 import LoadingOverlay from "./components/LoadingOverlay.vue";
 import TheNavbar from "./components/TheNavbar.vue";
 import NavOverlay from "./components/NavOverlay.vue";
-import Messenger from "./components/Messenger.vue";
 
 import Contact from "./components/Contact.vue";
 
 @Component({
-  components: { LoadingOverlay, TheNavbar, NavOverlay, Messenger, Contact }
+  components: { LoadingOverlay, TheNavbar, NavOverlay, Contact }
 })
 export default class App extends Vue {
   get isNavOpen(): boolean {
@@ -32,6 +42,33 @@ export default class App extends Vue {
     this.isNavOpen
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "auto");
+  }
+
+  created() {
+    console.log(process.env.appId);
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    (window as any).fbAsyncInit = function() {
+      /* eslint-disable prefer-const */
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      // eslint-disable-next-line no-undef
+      FB.init({
+        appId: process.env.appId,
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: "v7.0"
+      });
+    };
+    (function(d, s, id) {
+      let js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      (js as any).src =
+        "https://connect.facebook.net/pl_PL/sdk/xfbml.customerchat.js";
+      (fjs as any).parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
   }
 }
 </script>
