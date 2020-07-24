@@ -58,11 +58,14 @@ export default class PhotoGallery extends Vue {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pushRoute(item: any) {
-    if (!this.$props.displayImageOnly)
+    if (!this.$props.displayImageOnly) {
       this.$router.push({
         name: this.$props.routeComponentName,
         params: { name: convertToSlug(item.title), passedItem: item }
       });
+    } else {
+      if (item.link) window.open(item.link, "_blank");
+    }
   }
 }
 </script>

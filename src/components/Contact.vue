@@ -2,15 +2,19 @@
   <section class="contact">
     <div class="contact__container">
       <h1 data-aos="fade-up" data-aos-delay="300">
-        Ogranicza nas tylko wyobraźnia
+        Zaobserwuj na instagramie
+        <span
+          @click="
+            navigateOutside('https://instagram.com/alicjadebek_fotografia')
+          "
+          >@alicjadebek_fotografia</span
+        >
       </h1>
       <Instagram />
       <img
         src="@/assets/images/logo_black.png"
         alt="logo_black"
         class="logo unselectable"
-        data-aos="fade-up"
-        data-aos-delay="400"
       />
       <section class="contact__items--container">
         <div class="socials__items">
@@ -67,14 +71,21 @@ export default class Contact extends Vue {
     @include flex;
     flex-direction: column;
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 700;
       text-transform: uppercase;
       text-align: center;
+      span {
+        transition: color 0.5s ease-in-out;
+        &:hover {
+          cursor: pointer;
+          color: $thirdColor;
+        }
+      }
     }
     .logo {
       margin-top: $verticalPadding / 2;
-      max-width: 60vw;
+      max-width: 55vw;
     }
     .contact__items--container {
       display: grid;
@@ -144,7 +155,7 @@ export default class Contact extends Vue {
         max-width: 60vw;
       }
       h1 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
       }
 
       .contact__items--container {
