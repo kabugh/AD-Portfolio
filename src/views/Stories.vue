@@ -4,7 +4,7 @@
       title="Historie"
       subTitle="niezapomniane wspomnienia"
       description="Jeśli zobaczysz coś co cię poruszy, a następnie złapiesz to na zdjęciu, to zwyczajnie zatrzymasz ten moment na wieki."
-      image="bg.jpg"
+      image="stories.jpg"
     />
     <section class="content__container">
       <PhotoGallery

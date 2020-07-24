@@ -2,7 +2,7 @@
   <header
     class="hero"
     :style="{
-      backgroundImage: 'url(' + require(`@/assets/images/${this.image}`) + ')'
+      backgroundImage: 'url(' + `${publicPath}img/${this.image})`
     }"
   >
     <div class="hero__container">
@@ -34,6 +34,8 @@ export default class HeroPage extends Vue {
   @Prop({ required: false }) subTitle!: string;
   @Prop({ required: false }) description!: string;
   @Prop({ required: true }) image!: string;
+
+  publicPath = process.env.BASE_URL;
 
   mounted() {
     const title = this.$refs.title;

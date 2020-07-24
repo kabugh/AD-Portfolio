@@ -63,8 +63,6 @@ export default class PhotoGallery extends Vue {
         name: this.$props.routeComponentName,
         params: { name: convertToSlug(item.title), passedItem: item }
       });
-    } else {
-      if (item.link) window.open(item.link, "_blank");
     }
   }
 }
