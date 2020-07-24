@@ -112,13 +112,14 @@ export default class Home extends Vue {
     );
   }
 
+  publicPath = process.env.BASE_URL;
   slideShow = {
     images: [
-      require("@/assets/images/slideshow/1.jpg"),
-      require("@/assets/images/slideshow/2.jpg"),
-      require("@/assets/images/slideshow/3.jpg"),
-      require("@/assets/images/slideshow/4.jpg"),
-      require("@/assets/images/slideshow/5.jpg")
+      `${this.publicPath}img/slideshow/1.jpg`,
+      `${this.publicPath}img/slideshow/2.jpg`,
+      `${this.publicPath}img/slideshow/3.jpg`,
+      `${this.publicPath}img/slideshow/4.jpg`,
+      `${this.publicPath}img/slideshow/5.jpg`
     ],
     titles: [
       "Jagoda & Adriani",
@@ -270,11 +271,17 @@ export default class Home extends Vue {
         @include backgroundDefault;
         width: 48px;
         height: 48px;
+        transition: scale 0.2s ease-in-out;
         &:last-of-type {
           transform: rotate(180deg);
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.05) rotate(180deg);
+          }
         }
         &:hover {
           cursor: pointer;
+          transform: scale(1.05);
         }
       }
     }
