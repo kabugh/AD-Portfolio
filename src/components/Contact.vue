@@ -66,7 +66,7 @@ export default class Contact extends Vue {
   padding: $verticalPadding 0;
   .contact__container {
     color: black;
-    padding: $verticalPadding $horizontalPadding;
+    padding: $verticalPadding / 4 $horizontalPadding;
     padding-bottom: 0;
     @include flex;
     flex-direction: column;

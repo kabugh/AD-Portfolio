@@ -46,7 +46,6 @@ const actions = {
           const services = entries.items[0].fields.offersContainer.map(
             (a: any) => a.fields
           );
-          console.log(services);
           commit("setServices", services);
           commit("setLoading", false);
         });

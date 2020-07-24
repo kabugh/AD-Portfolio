@@ -27,6 +27,17 @@
           <ul v-else>
             <li>{{ currentService.description }}</li>
           </ul>
+          <div class="story__teaser" v-if="currentService.storyPhoto">
+            <img :src="currentService.storyPhoto" alt="story" />
+            <p>Sprawdź przykładową sesję tego rodzaju klikając poniżej</p>
+            <button
+              type="button"
+              class="dark thin"
+              @click="$router.push(`/historie/${currentService.storyLink}`)"
+            >
+              Sprawdź
+            </button>
+          </div>
         </div>
       </article>
     </div>
@@ -163,7 +174,7 @@ export default class Service extends Vue {
       }
     }
     .service__article {
-      padding: $verticalPadding 0 $verticalPadding / 2 0;
+      padding: $verticalPadding 0 $verticalPadding / 4 0;
       @include flex;
       flex-direction: column;
       h1,
@@ -190,6 +201,24 @@ export default class Service extends Vue {
           font-size: 1.125rem;
         }
       }
+      .story__teaser {
+        max-width: 100%;
+        min-height: 30vh;
+        margin: $verticalPadding * 3 / 2 auto 0 auto;
+        @include flex;
+        flex-direction: column;
+        p {
+          text-align: center;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        button {
+          margin-top: $verticalPadding / 2;
+        }
+      }
     }
   }
   .back__button {
@@ -211,6 +240,15 @@ export default class Service extends Vue {
   @media (min-width: 500px) and (min-height: 500px) {
     .service__container .image__container.vertical {
       max-width: 70%;
+    }
+    .service__article .article__content {
+      .story__teaser {
+        max-width: 80%;
+        min-height: 30vh;
+        button {
+          font-size: 14px;
+        }
+      }
     }
     .back__button {
       top: $verticalPadding / 2;
@@ -240,8 +278,12 @@ export default class Service extends Vue {
           font-size: 2rem;
           margin: $verticalPadding / 4 0;
         }
+        .story__teaser button {
+          margin-top: 0;
+        }
       }
     }
+
     .back__button {
       position: fixed;
       top: $verticalPadding;
@@ -256,6 +298,20 @@ export default class Service extends Vue {
   @media (min-width: 768px) and (min-height: 500px) and (max-height: 1024px) and (orientation: landscape) {
     .service__container .image__container.vertical {
       max-width: 60%;
+    }
+  }
+  @media (max-width: 800px) and (max-height: 450px) and (orientation: landscape) {
+    .service__container .image__container {
+      max-width: 70%;
+      &.vertical {
+        max-width: 50%;
+      }
+    }
+    .service__article .article__content {
+      .story__teaser {
+        max-width: 60%;
+        min-height: 30vh;
+      }
     }
   }
   @media (min-width: 1024px) and (min-height: 500px) {

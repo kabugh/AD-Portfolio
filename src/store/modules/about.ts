@@ -36,7 +36,6 @@ const actions = {
           include: 2 // specified level of references, links
         })
         .then((entries: { items: any[] }) => {
-          console.log(entries.items);
           const aboutMe = entries.items[0].fields.descriptions.map(
             (desc: any) => desc.fields
           );
