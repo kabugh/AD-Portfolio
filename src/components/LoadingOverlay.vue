@@ -28,7 +28,7 @@ export default class LoadingOverlay extends Vue {
     document.body.style.overflowY = "hidden";
   }
   mounted() {
-    window.addEventListener("load", () => {
+    window.addEventListener("DOMContentLoaded", () => {
       this.onLoadAnimation();
     });
   }

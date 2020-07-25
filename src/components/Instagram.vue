@@ -31,7 +31,7 @@ export default class Instagram extends Vue {
       accessToken: token,
       limit: 4,
       template:
-        '<a href="{{link}}" target="_blank" class="post"><img class="image" src="{{image}}"/></a>'
+        '<a href="{{link}}" aria-label="instagram link" rel="noopener noreferrer" target="_blank" class="post"><img class="image" src="{{image}} alt="instagram"/></a>'
     });
     feed.run();
   }

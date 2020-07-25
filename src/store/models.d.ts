@@ -10,9 +10,13 @@ export interface Story {
 export interface Service {
   title: string;
   image: string;
+  shortIntro: string;
   description: string;
+  additionalDescription: string;
   slug: string;
   orientation: string;
+  storyLink: string;
+  storyPhoto: string;
 }
 
 export interface AboutMeDescription {

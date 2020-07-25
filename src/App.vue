@@ -26,7 +26,6 @@ import { Vue, Watch, Component } from "vue-property-decorator";
 import LoadingOverlay from "./components/LoadingOverlay.vue";
 import TheNavbar from "./components/TheNavbar.vue";
 import NavOverlay from "./components/NavOverlay.vue";
-
 import Contact from "./components/Contact.vue";
 
 @Component({
@@ -43,7 +42,6 @@ export default class App extends Vue {
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "auto");
   }
-
   created() {
     /* eslint-disable @typescript-eslint/no-explicit-any */
     (window as any).fbAsyncInit = function() {

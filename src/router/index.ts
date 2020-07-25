@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig, Route } from "vue-router";
 import Home from "../views/Home.vue";
 import store from "@/store";
-import { nextTick } from "vue/types/umd";
+
 
 Vue.use(VueRouter);
 

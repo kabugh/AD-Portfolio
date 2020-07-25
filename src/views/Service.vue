@@ -13,20 +13,13 @@
       <article class="service__article">
         <h1 ref="title">{{ currentService.title }}</h1>
         <div class="article__content" ref="content">
-          <p>
-            Uwielbiam fotografować kochających się ludzi, można powiedzieć, że
-            jestem „zakochana w miłości”. Często potrafię się wzruszyć na ślubie
-            moich klientów, na szczęście za aparatem nikt tego nie widzi.
+          <p v-if="currentService.shortIntro">
+            {{ currentService.shortIntro }}
           </p>
-          <h2>Co charakteryzuje moją pracę:</h2>
-          <ul v-if="Array.isArray(currentService.description)">
-            <li v-for="(item, i) in currentService.description" :key="i">
-              {{ item }}
-            </li>
-          </ul>
-          <ul v-else>
-            <li>{{ currentService.description }}</li>
-          </ul>
+          <p>{{ currentService.description }}</p>
+          <p v-if="currentService.additionalDescription">
+            {{ currentService.additionalDescription }}
+          </p>
           <div class="story__teaser" v-if="currentService.storyPhoto">
             <img :src="currentService.storyPhoto" alt="story" />
             <p>Sprawdź przykładową sesję tego rodzaju klikając poniżej</p>
@@ -54,7 +47,6 @@ import { TimelineLite } from "gsap";
 })
 export default class Service extends Vue {
   overlayDelay = false;
-
   mounted() {
     if (this.$props.service !== undefined) {
       if (this.$props.service.slug === this.$route.params.name) {
@@ -125,7 +117,7 @@ export default class Service extends Vue {
       .from(
         content,
         { duration: 1, opacity: 0, y: -20, ease: "power4" },
-        "-=1.5"
+        "-=1.8"
       )
       .to(content, { y: 0 });
   }
@@ -180,7 +172,7 @@ export default class Service extends Vue {
       h1,
       h2 {
         margin: $verticalPadding / 2 0;
-        font-size: 1.5rem;
+        font-size: 2rem;
         text-align: center;
         font-weight: 600;
         text-transform: uppercase;

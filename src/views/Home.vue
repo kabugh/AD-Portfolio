@@ -138,79 +138,6 @@ export default class Home extends Vue {
     return this.$store.getters.services;
   }
 
-  // offerItems = [
-  //   {
-  //     title: "Reportaż Ślubny",
-  //     image:
-  //       "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-  //     orientation: "horizontal",
-  //     description: [
-  //       "Każde wesele traktuję jak własne. Staram się poznać Was jak najlepiej, wiedzieć co jest dla Was ważne, abyście nie mieli poczucia kogoś „obcego” w Waszym dniu.",
-  //       "Nie fotografuję tylko kluczowych momentów, szukam detali, ciekawych sytuacji, gestów, spojrzeń, wszystkiego, co składa się na klimat tego wyjątkowego dnia.",
-  //       "Potrafię sfotografować Was tak, abyście nie czuli się „ustawieni”. Na sesji plenerowej macie przede wszystkim świetnie się bawić, a ja zajmę się chwytaniem Waszych najlepszych momentów.",
-  //       "Moje zdjęcia mają specyficzny styl. Lubię minimalizm, detale, delikatne kolory, światłocienie, niedopowiedzenia. Warto zajrzeć do mojego portfolio lub na facebooka, by przekonać się, czy i Wam ten styl odpowiada",
-  //       "Wszyscy lubią gratisy! U mnie dostaniecie darmową sesję narzeczeńską, pendrive’a z albumem lub drewnianym pudełkiem na odbitki."
-  //     ],
-  //     slug: "reportaz-slubny"
-  //   },
-  //   {
-  //     title: "Sesja we dwoje",
-  //     image:
-  //       "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-  //     orientation: "vertical",
-  //     description: [
-  //       "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
-  //       "Namiot w lesie, hamak o zachodzie słońca.."
-  //     ],
-  //     slug: "sesja-we-dwoje"
-  //   },
-  //   {
-  //     title: "Sesja Kobieca",
-  //     image:
-  //       "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-  //     orientation: "vertical",
-  //     description: [
-  //       "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
-  //       "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
-  //       "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
-  //       "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
-  //       "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
-  //       "Tylko Wy i Wasza opowieść."
-  //     ],
-  //     slug: "sesja-kobieca"
-  //   },
-  //   {
-  //     title: "Sesja Lifestyle / Rodzinna",
-  //     image:
-  //       "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-  //     orientation: "horizontal",
-  //     description: [
-  //       "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
-  //       "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
-  //       "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
-  //       "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
-  //       "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
-  //       "Tylko Wy i Wasza opowieść."
-  //     ],
-  //     slug: "sesja-lifestyle-rodzinna"
-  //   },
-  //   {
-  //     title: "Reportaż okolicznościowy",
-  //     image:
-  //       "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-  //     orientation: "horizontal",
-  //     description: [
-  //       "W przeciwieństwie do sesji ślubnej, tutaj nie ogranicza nas suknia i garnitur, a jedynie wyobraźnia.",
-  //       "Namiot w lesie, hamak o zachodzie słońca, ognisko nad wodą? A może romantyczna kawiarnia, wieczór przy kominku lub szalony dzień na mieście?",
-  //       "Pokażcie, jacy naprawdę jesteście, a zapewniam, że będziecie bardzo miło wracać do tych zdjęć.",
-  //       "Sesja we dwoje to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was i Waszym związku, pełen emocji, gestów, po prostu Was",
-  //       "Jeśli myślicie, że nie umiecie „pozować”, to dobrze – bo nie musicie! Nie będzie tutaj sztuczności, stresu i krępującego ustawiania.",
-  //       "Tylko Wy i Wasza opowieść."
-  //     ],
-  //     slug: "reportaz-okolicznosciowy"
-  //   }
-  // ];
-
   currentTitleIndex = 0;
   currentTitle = this.slideShow.titles[this.currentTitleIndex];
 
@@ -259,6 +186,12 @@ export default class Home extends Vue {
     height: 100vh;
     background-color: black;
     position: relative;
+    .vue-displacement-slideshow {
+      canvas {
+        transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        background-color: gray;
+      }
+    }
     .slideshow__controls {
       width: 100%;
       position: absolute;
