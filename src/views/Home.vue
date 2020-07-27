@@ -65,7 +65,7 @@
           >
             <div class="image__wrapper">
               <img
-                :src="item.image"
+                :src="item.image.fields.file.url"
                 :alt="item.title"
                 class="unselectable"
                 data-aos="fade-up"

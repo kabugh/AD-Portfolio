@@ -3,7 +3,9 @@
     <div class="service__container" v-if="currentService">
       <div class="image__container" :class="orientationClass(currentService)">
         <div
-          :style="{ backgroundImage: `url(${this.currentService.image}` }"
+          :style="{
+            backgroundImage: `url(${image}`
+          }"
           :alt="currentService.title"
           class="image unselectable"
           ref="image"
@@ -21,7 +23,7 @@
             {{ currentService.additionalDescription }}
           </p>
           <div class="story__teaser" v-if="currentService.storyPhoto">
-            <img :src="currentService.storyPhoto" alt="story" />
+            <img :src="currentService.storyPhoto.fields.file.url" alt="story" />
             <p>Sprawdź przykładową sesję tego rodzaju klikając poniżej</p>
             <button
               type="button"
@@ -74,6 +76,12 @@ export default class Service extends Vue {
 
   get currentService() {
     return this.$store.getters.currentService;
+  }
+
+  get image() {
+    if (this.currentService.image)
+      return this.currentService.image.fields.file.url;
+    else return null;
   }
 
   startAnimation(overlayDelay: boolean) {

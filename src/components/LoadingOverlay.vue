@@ -29,7 +29,7 @@ export default class LoadingOverlay extends Vue {
   }
   mounted() {
     window.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => this.onLoadAnimation(), 3000);
+      setTimeout(() => this.onLoadAnimation(), 1000);
     });
   }
 

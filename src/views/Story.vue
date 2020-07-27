@@ -4,7 +4,7 @@
       v-if="currentStory"
       class="hero"
       :style="{
-        backgroundImage: `url(${currentStory.frontImage})`
+        backgroundImage: `url(${frontImage})`
       }"
       ref="header"
     >
@@ -30,7 +30,7 @@
         </p>
         <div data-aos="fade-up" data-aos-delay="400" class="image__wrapper">
           <img
-            :src="element.fields.image"
+            :src="element.fields.image.fields.file.url"
             :alt="element.fields.pageTitle"
             class="unselectable"
           />
@@ -59,7 +59,8 @@ export default class Story extends Vue {
   @Prop() passedItem!: {
     name: string;
     description: string;
-    frontImage: string;
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    frontImage: Object;
     images: string[];
   };
 
@@ -81,6 +82,12 @@ export default class Story extends Vue {
 
   get currentStory() {
     return this.$store.getters.currentStory;
+  }
+
+  get frontImage() {
+    if (this.currentStory.frontImage)
+      return this.currentStory.frontImage.fields.file.url;
+    else return null;
   }
 
   startAnimation() {

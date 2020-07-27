@@ -22,7 +22,7 @@
           :data-aos-delay="200 + i * 100"
         >
           <img
-            :src="item.frontImage"
+            :src="item.frontImage.fields.file.url"
             :alt="item.title"
             class="image"
             v-if="!displayImageOnly"

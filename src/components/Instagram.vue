@@ -7,15 +7,24 @@
         class="grid"
         id="instafeed"
       ></div>
+      <!-- <PhotoGallery
+        v-if="images.length > 0"
+        :images="images"
+        :displayImageOnly="true"
+      /> -->
     </div>
   </section>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+// import PhotoGallery from "@/components/PhotoGallery.vue";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import axios from "axios";
 
 @Component
+// ({
+//   components: { PhotoGallery }
+// })
 export default class Instagram extends Vue {
   async created() {
     const userId = process.env.VUE_APP_userId;
@@ -30,11 +39,20 @@ export default class Instagram extends Vue {
     const feed = new Instafeed({
       accessToken: token,
       limit: 4,
+      // success: (data: any) => this.rest(data),
       template:
-        '<a href="{{link}}" aria-label="instagram link" rel="noopener noreferrer" target="_blank" class="post"><img class="image" src="{{image}} alt="instagram"/></a>'
+        '<a href="{{link}}" aria-label="instagram link" target="_blank" class="post"><img class="image" alt="instagram" src="{{image}} /></a>'
     });
     feed.run();
   }
+  images = [];
+
+  // rest(data: any) {
+  //   this.images = data.data.slice(0, 4).map((obj: any) => ({
+  //     mediaUrl: obj.media_url,
+  //     permalink: obj.permalink
+  //   }));
+  // }
 }
 </script>
 <style lang="scss">

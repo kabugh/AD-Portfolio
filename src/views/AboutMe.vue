@@ -14,7 +14,7 @@
       <div
         class="description__image"
         :style="{
-          backgroundImage: `url(${desc.image})`
+          backgroundImage: `url(${desc.image.fields.file.url})`
         }"
       ></div>
       <div class="description__container">
