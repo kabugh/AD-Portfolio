@@ -29,7 +29,7 @@
         </div>
       </div>
     </section>
-    <section class="photography">
+    <!-- <section class="photography">
       <div class="photography__container">
         <div class="title__container">
           <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </section>
 </template>
 <script lang="ts">

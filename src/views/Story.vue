@@ -42,6 +42,7 @@
       :images="currentStory.gallery.images"
       :displayImageOnly="true"
       :zoomedPhotos="true"
+      :instagram="false"
     />
     <div v-else></div>
   </section>

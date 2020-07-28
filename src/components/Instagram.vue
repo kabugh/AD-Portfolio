@@ -22,16 +22,16 @@ import { Vue, Component } from "vue-property-decorator";
 import axios from "axios";
 
 @Component
-// ({
-//   components: { PhotoGallery }
-// })
 export default class Instagram extends Vue {
   async created() {
     const userId = process.env.VUE_APP_userId;
     const userSecret = process.env.VUE_APP_userSecret;
     const url = `https://ig.instant-tokens.com/users/2d128920-0d65-41f8-bad5-9f0db2b2bb76/instagram/${userId}/token?userSecret=${userSecret}`;
     let token = "";
-    await axios.get(url).then(response => (token = response.data.Token));
+    await axios
+      .get(url)
+      .then(response => (token = response.data.Token))
+      .catch(e => console.log(e));
     /* eslint-disable @typescript-eslint/no-explicit-any */
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -39,20 +39,21 @@ export default class Instagram extends Vue {
     const feed = new Instafeed({
       accessToken: token,
       limit: 4,
-      // success: (data: any) => this.rest(data),
       template:
-        '<a href="{{link}}" aria-label="instagram link" target="_blank" class="post"><img class="image" alt="instagram" src="{{image}} /></a>'
+        '<a href="{{link}}" aria-label="instagram" class="post" target="_blank"><img class="image" alt="{{caption}}" src="{{image}}" /></a>'
+      // template:
+      // '<a href="{{link}}" target="_blank" class="post"><img class="image" src="{{image}} /></a>'
     });
     feed.run();
   }
   images = [];
 
-  // rest(data: any) {
-  //   this.images = data.data.slice(0, 4).map((obj: any) => ({
-  //     mediaUrl: obj.media_url,
-  //     permalink: obj.permalink
-  //   }));
-  // }
+  restuctureData(data: any) {
+    this.images = data.data.slice(0, 4).map((obj: any) => ({
+      mediaUrl: obj.media_url,
+      permalink: obj.permalink
+    }));
+  }
 }
 </script>
 <style lang="scss">

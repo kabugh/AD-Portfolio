@@ -55,7 +55,11 @@ export default class Contact extends Vue {
       icon: "instagram.svg",
       link: "https://instagram.com/alicjadebek_fotografia"
     },
-    { icon: "fb.svg", link: "https://www.facebook.com/alicjadebekfotografia/" }
+    { icon: "fb.svg", link: "https://www.facebook.com/alicjadebekfotografia/" },
+    {
+      icon: "messenger.svg",
+      link: "https://www.messenger.com/t/alicjadebekfotografia"
+    }
   ];
 }
 </script>
