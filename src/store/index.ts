@@ -5,7 +5,7 @@ import stories from "./modules/stories";
 import services from "./modules/services";
 import about from "./modules/about";
 import partners from "./modules/partners";
-
+import slideshow from "./modules/slideshow";
 
 Vue.use(Vuex);
 
@@ -15,6 +15,7 @@ export default new Vuex.Store({
     stories,
     services,
     about,
-    partners
+    partners,
+    slideshow
   }
 });

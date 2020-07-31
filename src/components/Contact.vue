@@ -2,7 +2,7 @@
   <section class="contact">
     <div class="contact__container">
       <h1 data-aos="fade-up" data-aos-delay="300">
-        Zaobserwuj na instagramie
+        Zobacz moje portfolio na
         <span
           @click="
             navigateOutside('https://instagram.com/alicjadebek_fotografia')

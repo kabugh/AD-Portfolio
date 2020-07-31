@@ -2,15 +2,16 @@
   <section class="home">
     <header class="hero">
       <vue-displacement-slideshow
-        :images="slideShow.images"
+        v-if="slideshow.images.length > 1"
+        :images="slideshow.images"
         :displacement="require('@/assets/images/displacement.png')"
         :intensity="0.1"
         :speedIn="1.4"
         :speedOut="1.4"
         ease="expo.in"
         ref="slideshow"
-        @animationEnd="nextTitle"
       ></vue-displacement-slideshow>
+      <!--  @animationEnd="nextTitle" -->
       <div
         class="slideshow__controls"
         data-aos="fade-up"
@@ -19,7 +20,8 @@
       >
         <div class="prev__control" @click="$refs.slideshow.previous()"></div>
         <transition name="slide-fade" mode="out-in">
-          <h2 :key="currentTitle" ref="currentTitle">{{ currentTitle }}</h2>
+          <!-- <h2 :key="currentTitle" ref="currentTitle"></h2> -->
+          <h2 ref="currentTitle"></h2>
         </transition>
         <div class="next__control" @click="$refs.slideshow.next()"></div>
       </div>
@@ -99,56 +101,42 @@ import { convertToSlug } from "@/utils/slugify";
   }
 })
 export default class Home extends Vue {
-  created() {
-    this.$store.dispatch("fetchServices");
+  get slideshow() {
+    return this.$store.getters.slideshow;
   }
-
-  mounted() {
-    this.$watch(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      () => (this.$refs.slideshow as any).currentImage,
-      val => {
-        this.currentTitleIndex = val;
-        this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
-      }
-    );
-  }
-
-  publicPath = process.env.BASE_URL;
-  slideShow = {
-    images: [
-      `${this.publicPath}img/slideshow/1.jpg`,
-      `${this.publicPath}img/slideshow/2.jpg`,
-      `${this.publicPath}img/slideshow/3.jpg`,
-      `${this.publicPath}img/slideshow/4.jpg`,
-      `${this.publicPath}img/slideshow/5.jpg`
-    ],
-    titles: [
-      "Jagoda & Adriani",
-      "Basia & Roman",
-      "Emily & Luke",
-      "Sesja Kobieca",
-      "Ola & Jacek"
-    ]
-  };
 
   get offerItems() {
     return this.$store.getters.services;
   }
 
-  currentTitleIndex = 0;
-  currentTitle = this.slideShow.titles[this.currentTitleIndex];
-
-  nextTitle() {
-    this.$watch(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      () => (this.$refs.slideshow as any).currentImage,
-      val => {
-        this.currentTitleIndex = val;
-        this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
-      }
-    );
+  async created() {
+    await this.$store.dispatch("fetchSlideshow");
+    await this.$store.dispatch("fetchServices");
   }
+
+  // mounted() {
+  //   this.$watch(
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     () => (this.$refs.slideshow as any).currentImage,
+  //     val => {
+  //       this.currentTitleIndex = val;
+  //       this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
+  //     }
+  //   );
+  // }
+  // currentTitleIndex = 0;
+  // currentTitle = this.slideShow.titles[this.currentTitleIndex];
+
+  // nextTitle() {
+  //   this.$watch(
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     () => (this.$refs.slideshow as any).currentImage,
+  //     val => {
+  //       this.currentTitleIndex = val;
+  //       this.currentTitle = this.slideShow.titles[this.currentTitleIndex];
+  //     }
+  //   );
+  // }
 
   orientationClass(item: { orientation: string }) {
     return {
