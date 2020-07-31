@@ -25,3 +25,8 @@ export interface AboutMeDescription {
   description: string;
   image: Object;
 }
+
+export interface Partner {
+  image: string;
+  link?: string;
+}
