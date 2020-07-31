@@ -5,7 +5,9 @@
     <transition name="navOverlay">
       <NavOverlay v-if="isNavOpen"></NavOverlay>
     </transition>
-    <router-view />
+    <keep-alive include="Home">
+      <router-view />
+    </keep-alive>
     <Contact />
     <div id="fb-root"></div>
     <div
@@ -42,6 +44,7 @@ export default class App extends Vue {
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "auto");
   }
+
   created() {
     /* eslint-disable @typescript-eslint/no-explicit-any */
     (window as any).fbAsyncInit = function() {

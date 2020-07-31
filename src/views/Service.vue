@@ -54,6 +54,7 @@ export default class Service extends Vue {
       if (this.$props.service.slug === this.$route.params.name) {
         this.currentService = this.$props.service;
         this.overlayDelay = false;
+        this.overlayLoading = false;
         this.startAnimation(this.overlayDelay);
       }
     } else if (
@@ -61,13 +62,23 @@ export default class Service extends Vue {
       this.currentService.image !== undefined
     ) {
       this.overlayDelay = false;
+      this.overlayLoading = false;
       this.startAnimation(this.overlayDelay);
     } else {
       this.overlayDelay = true;
-      this.$store
-        .dispatch("fetchService", this.$route.params.name)
-        .then(() => this.startAnimation(this.overlayDelay));
+      this.$store.dispatch("fetchService", this.$route.params.name).then(() => {
+        this.overlayLoading = false;
+        this.startAnimation(this.overlayDelay);
+      });
     }
+  }
+
+  get overlayLoading() {
+    return this.$store.getters.overlayLoading;
+  }
+
+  set overlayLoading(value) {
+    this.$store.commit("setOverlayLoading", value);
   }
 
   set currentService(value) {

@@ -24,14 +24,23 @@ import { TimelineLite } from "gsap";
 
 @Component
 export default class LoadingOverlay extends Vue {
-  beforeCreate() {
-    document.body.style.overflowY = "hidden";
-  }
-
   get overlayLoading() {
     return this.$store.getters.overlayLoading;
   }
 
+  set overlayLoading(value) {
+    this.$store.commit("setOverlayLoading", value);
+  }
+
+  beforeCreate() {
+    document.body.style.overflowY = "hidden";
+  }
+
+  mounted() {
+    if (this.$route.path !== "/") {
+      this.overlayLoading = false;
+    }
+  }
   @Watch("overlayLoading")
   hideOverlay() {
     this.onLoadAnimation();

@@ -28,8 +28,17 @@ import PhotoGallery from "@/components/PhotoGallery.vue";
   components: { HeroPage, PhotoGallery }
 })
 export default class Stories extends Vue {
-  created() {
-    this.$store.dispatch("fetchStories");
+  async created() {
+    await this.$store.dispatch("fetchStories");
+    this.overlayLoading = false;
+  }
+
+  get overlayLoading() {
+    return this.$store.getters.overlayLoading;
+  }
+
+  set overlayLoading(value) {
+    this.$store.commit("setOverlayLoading", value);
   }
 
   get loading() {

@@ -39,7 +39,7 @@
     </article>
     <PhotoGallery
       v-if="this.currentStory && Object.values(this.currentStory).length > 0"
-      :images="currentStory.gallery.images"
+      :images="gallery"
       :displayImageOnly="true"
       :zoomedPhotos="true"
       :instagram="false"
@@ -69,12 +69,22 @@ export default class Story extends Vue {
     if (this.$props.passedItem !== undefined) {
       if (this.$props.passedItem.slug === this.$route.params.name) {
         this.currentStory = this.$props.passedItem;
+        this.overlayLoading = false;
         this.startAnimation();
       }
     } else {
       await this.$store.dispatch("fetchStory", this.$route.params.name);
+      this.overlayLoading = false;
       this.startAnimation();
     }
+  }
+
+  get overlayLoading() {
+    return this.$store.getters.overlayLoading;
+  }
+
+  set overlayLoading(value) {
+    this.$store.commit("setOverlayLoading", value);
   }
 
   set currentStory(value) {
@@ -83,6 +93,11 @@ export default class Story extends Vue {
 
   get currentStory() {
     return this.$store.getters.currentStory;
+  }
+
+  get gallery() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return this.currentStory.gallery.map((image: any) => image.fields.file.url);
   }
 
   get frontImage() {

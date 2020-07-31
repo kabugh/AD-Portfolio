@@ -72,48 +72,22 @@ import HeroPage from "@/components/HeroPage.vue";
   components: { HeroPage }
 })
 export default class AboutMe extends Vue {
-  created() {
-    this.$store.dispatch("fetchAboutMe");
+  get overlayLoading() {
+    return this.$store.getters.overlayLoading;
+  }
+
+  set overlayLoading(value) {
+    this.$store.commit("setOverlayLoading", value);
   }
 
   get aboutMe() {
     return this.$store.getters.aboutMe;
   }
 
-  desca = [
-    {
-      image: "about1.jpg",
-      title: "O Mnie",
-      subTitle:
-        "Nazywam się Alicja Dębek, a fotografia to jedna z moich największych pasji.",
-      description:
-        "Z wykształcenia jestem fototechnikiem. Uwielbiam fotografować kochających się ludzi, można powiedzieć, że jestem „zakochana w miłości”.  Często wzruszam się na ślubach, na szczęście za aparatem nikt tego nie widzi."
-    },
-    {
-      image: "about2.jpg",
-      title: "Zainteresowania",
-      subTitle:
-        "Prywatnie jestem introwertyczką, szczęśliwie zakochaną w pewnym artyście.",
-      description:
-        "Gram w gry komputerowe, lubię literaturę fantastyczną, dinozaury i kulturę pogańską. Fascynują mnie zwierzęta w każdej postaci. Po godzinach natomiast działam w temacie fotografii alternatywnej, współpracując z modelkami, projektantami i makijażystami, i realizując wspólnie różne magiczne, niekiedy nieco mroczne pomysły."
-    }
-  ];
-  statistics = [
-    {
-      icon: "photo.png",
-      number: "128",
-      title: "Sesji fotograficznych",
-      description:
-        "Sesja to nie tylko zdjęcia Waszych twarzy, ale kawałek Waszej historii, dokument o Was, pełen emocji, gestów, po prostu Was"
-    },
-    {
-      icon: "camera.png",
-      number: "875",
-      title: "Cudownych ujęć",
-      description:
-        "Moje dotychczasowe osiągnięcia to między innymi publikacja w Italian Vogue czy w Dark Beauty Magazine."
-    }
-  ];
+  async created() {
+    await this.$store.dispatch("fetchAboutMe");
+    this.overlayLoading = false;
+  }
 }
 </script>
 <style lang="scss">
