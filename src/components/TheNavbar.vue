@@ -229,6 +229,8 @@ nav {
             cursor: pointer;
           }
           &:not(.icons__container) {
+            max-width: fit-content;
+            margin: 0 auto;
             &:hover:after {
               width: 100%;
             }

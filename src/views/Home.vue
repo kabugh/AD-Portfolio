@@ -10,7 +10,9 @@
         :speedOut="1.4"
         ease="expo.in"
         ref="slideshow"
+        @loaded="overlayLoading = false"
       ></vue-displacement-slideshow>
+      <div class="background__placeholder" v-else></div>
       <!--  @animationEnd="nextTitle" -->
       <div
         class="slideshow__controls"
@@ -109,6 +111,14 @@ export default class Home extends Vue {
     return this.$store.getters.services;
   }
 
+  get overlayLoading() {
+    return this.$store.getters.overlayLoading;
+  }
+
+  set overlayLoading(value) {
+    this.$store.commit("setOverlayLoading", value);
+  }
+
   async created() {
     await this.$store.dispatch("fetchSlideshow");
     await this.$store.dispatch("fetchServices");
@@ -177,6 +187,10 @@ export default class Home extends Vue {
         transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
         background-color: gray;
       }
+    }
+    .background__placeholder {
+      @include backgroundDefault;
+      background-image: url("../assets/images/bg.jpg");
     }
     .slideshow__controls {
       width: 100%;

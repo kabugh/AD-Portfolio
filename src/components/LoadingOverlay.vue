@@ -18,7 +18,7 @@
   </section>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Watch, Component } from "vue-property-decorator";
 import slideAnimations from "@/utils/slideAnimations";
 import { TimelineLite } from "gsap";
 
@@ -27,10 +27,14 @@ export default class LoadingOverlay extends Vue {
   beforeCreate() {
     document.body.style.overflowY = "hidden";
   }
-  mounted() {
-    window.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => this.onLoadAnimation(), 1000);
-    });
+
+  get overlayLoading() {
+    return this.$store.getters.overlayLoading;
+  }
+
+  @Watch("overlayLoading")
+  hideOverlay() {
+    this.onLoadAnimation();
   }
 
   onLoadAnimation() {

@@ -1,7 +1,8 @@
 const state = {
   isNavOpen: false,
   loading: false,
-  error: null
+  error: null,
+  overlayLoading: true
 };
 
 const mutations = {
@@ -16,7 +17,10 @@ const mutations = {
   },
   clearError(state: { error: null }) {
     state.error = null;
-  }
+  },
+  setOverlayLoading(state: { overlayLoading: boolean }, payload: boolean) {
+    state.overlayLoading = payload;
+  },
 };
 
 const getters = {
@@ -28,7 +32,10 @@ const getters = {
   },
   error(state: { error: string }) {
     return state.error;
-  }
+  },
+  overlayLoading(state: { overlayLoading: boolean }) {
+    return state.overlayLoading;
+  },
 };
 
 export default {

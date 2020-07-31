@@ -73,9 +73,13 @@ export default class Partners extends Vue {
   .partners__container {
     padding: $verticalPadding $horizontalPadding / 2;
     .item {
-      width: 30vmax;
+      width: 25vmax;
       height: 20vh;
       @include flex;
+      @media (min-width: 1024px) {
+        width: 10vmax;
+        height: 12vh;
+      }
       img {
         width: 100%;
         height: 100%;
