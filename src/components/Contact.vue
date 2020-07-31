@@ -11,6 +11,7 @@
         >
       </h1>
       <Instagram />
+      <Partners v-if="$route.path === '/'" />
       <img
         src="@/assets/images/logo_black.png"
         alt="logo_black"
@@ -42,9 +43,10 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import Instagram from "./Instagram.vue";
+import Partners from "./Partners.vue";
 
 @Component({
-  components: { Instagram }
+  components: { Instagram, Partners }
 })
 export default class Contact extends Vue {
   navigateOutside(link: string) {

@@ -90,13 +90,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Contact from "@/components/Contact.vue";
 import VueDisplacementSlideshow from "vue-displacement-slideshow";
 import { convertToSlug } from "@/utils/slugify";
 
 @Component({
   components: {
-    Contact,
     VueDisplacementSlideshow
   }
 })
