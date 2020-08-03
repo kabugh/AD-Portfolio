@@ -8,7 +8,8 @@
         :perPage="1"
         :perPageCustom="[
           [768, 2],
-          [960, 3]
+          [960, 3],
+          [1250, 4]
         ]"
         :paginationSize="12"
         data-aos="fade-up"
