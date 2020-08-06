@@ -23,7 +23,12 @@
           <h3 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
             {{ desc.subTitle }}
           </h3>
-          <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-delay="400"
+            data-aos-offset="-50"
+          >
             {{ desc.description }}
           </p>
         </div>
@@ -120,12 +125,12 @@ export default class AboutMe extends Vue {
         }
         h3 {
           margin: 2vh 0;
-          font-size: 1.25rem;
+          font-size: 1.125rem;
         }
         p {
           color: $secondaryColor;
           line-height: 1.5;
-          font-size: 0.875rem;
+          font-size: 1rem;
         }
       }
     }
@@ -209,28 +214,19 @@ export default class AboutMe extends Vue {
         }
       }
     }
-    .photography .photography__container {
-      .title__container {
-        h1 {
-          font-size: 2.5rem;
-        }
-        p {
-          max-width: 60vw;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-      .statistics__container {
-        flex-direction: row;
-        padding-top: $verticalPadding / 2;
-      }
-    }
   }
   @media (max-width: 850px) and (max-height: 450px) and (orientation: landscape) {
     .description__section {
       min-height: 80vh;
       .description__image {
         display: none;
+      }
+    }
+  }
+  @media (min-width: 1280px) and (min-height: 500px) {
+    .description__section .description__container .description__wrapper {
+      p {
+        font-size: 1.125rem;
       }
     }
   }
@@ -248,23 +244,14 @@ export default class AboutMe extends Vue {
       }
       .description__container .description__wrapper {
         h1 {
-          font-size: 2.5rem;
+          font-size: 2.75rem;
         }
         h3 {
           font-size: 1.5rem;
         }
         p {
-          font-size: 1rem;
+          font-size: 1.25rem;
         }
-      }
-    }
-    .photography .photography__container {
-      .title__container {
-        padding: 0 $horizontalPadding * 1.25;
-      }
-      .statistics__container {
-        padding: $verticalPadding * 1.25 $horizontalPadding * 1.25 0
-          $horizontalPadding * 1.25;
       }
     }
   }
