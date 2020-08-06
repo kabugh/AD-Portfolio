@@ -1,4 +1,4 @@
-# AD photographer portfolio
+# 📷 AD photographer portfolio
 Webpage built for a photographer featuring her work - photo shoots, client stories, photo galleries.
 
 Developed using Vue, Vuex, Vue-Router with Typescript. 
