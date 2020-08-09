@@ -42,7 +42,7 @@
       :images="gallery"
       :displayImageOnly="true"
       :zoomedPhotos="true"
-      :instagram="false"
+      :displayOverlay="true"
     />
     <div v-else></div>
   </section>

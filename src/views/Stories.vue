@@ -13,6 +13,7 @@
         routeComponentName="story"
         :displayImageOnly="false"
         :zoomedPhotos="false"
+        :displayOverlay="true"
       />
       <div class="loading" v-else>loading..</div>
     </section>

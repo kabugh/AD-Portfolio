@@ -30,13 +30,23 @@
           <img :src="item" :alt="item" class="image" v-else />
           <div
             class="image__description_layer"
-            :class="{ light: displayImageOnly }"
+            :class="{
+              light: displayImageOnly && !displayOverlay,
+              disableAutoHover: displayImageOnly && displayOverlay
+            }"
           >
             <div class="description__container" v-if="!displayImageOnly">
               <h1>{{ item.title }}</h1>
               <p>
                 {{ item.description }}
               </p>
+            </div>
+            <div class="description__container" v-else-if="displayOverlay">
+              <img
+                src="@/assets/images/icons/zoom.png"
+                class="unselectable"
+                alt="zoom-in"
+              />
             </div>
           </div>
         </div>
@@ -45,15 +55,19 @@
   </section>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Prop, Component } from "vue-property-decorator";
 import { LightGallery } from "vue-light-gallery";
 import { convertToSlug } from "@/utils/slugify";
 
 @Component({
-  props: ["images", "routeComponentName", "displayImageOnly", "zoomedPhotos"],
   components: { LightGallery }
 })
 export default class PhotoGallery extends Vue {
+  @Prop({ required: true }) images!: string[];
+  @Prop() routeComponentName!: string;
+  @Prop({ default: false, required: true }) displayImageOnly!: boolean;
+  @Prop({ default: false, required: true }) zoomedPhotos!: boolean;
+  @Prop({ default: false, required: true }) displayOverlay!: boolean;
   index = null;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -122,6 +136,9 @@ export default class PhotoGallery extends Vue {
         &.light {
           background: transparent;
         }
+        &.disableAutoHover {
+          visibility: hidden;
+        }
       }
 
       .description__container {
@@ -138,6 +155,10 @@ export default class PhotoGallery extends Vue {
           font-size: 0.875rem;
           line-height: 1.75;
         }
+        img {
+          width: 48px;
+          height: 48px;
+        }
       }
     }
     @media (min-width: 360px) {
@@ -153,6 +174,9 @@ export default class PhotoGallery extends Vue {
     @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
       .image__container {
         .image__description_layer {
+          &.disableAutoHover {
+            visibility: initial;
+          }
           opacity: 0;
           visibility: hidden;
         }
