@@ -241,7 +241,7 @@ nav {
               left: 0px;
               background-color: white;
               height: 0.1em;
-              margin-top: 16px;
+              margin-top: 1.5vh;
               transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
               width: 0;
             }
