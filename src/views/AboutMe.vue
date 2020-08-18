@@ -3,7 +3,7 @@
     <HeroPage
       title="Alicja Dębek"
       subTitle="o mnie"
-      description="Fotografia nie jest związana z patrzeniem, lecz z czuciem. Jeżeli nie czujesz nic w tym, na co patrzysz, nigdy nie uda ci się sprawić, aby ludzie patrząc na twoje zdjęcia, cokolwiek odczuwali."
+      description="Każdy człowiek to osobny wszechświat. Jak dobrze, że istnieją zdjęcia, przez które możemy zajrzeć do siebie nazwajem."
       image="about.jpg"
     />
     <section

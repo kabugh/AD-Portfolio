@@ -5,9 +5,11 @@
     <transition name="navOverlay">
       <NavOverlay v-if="isNavOpen"></NavOverlay>
     </transition>
-    <keep-alive include="Home">
-      <router-view />
-    </keep-alive>
+    <transition name="fade" appear>
+      <keep-alive include="Home">
+        <router-view />
+      </keep-alive>
+    </transition>
     <Contact />
     <div id="fb-root"></div>
     <div

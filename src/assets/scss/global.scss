@@ -124,3 +124,11 @@ hr.title__line {
 // .fb_dialog.visible {
 //   display: block;
 // }
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter {
+  opacity: 0;
+}

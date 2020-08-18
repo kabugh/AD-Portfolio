@@ -3,7 +3,7 @@
     <HeroPage
       title="Historie"
       subTitle="niezapomniane wspomnienia"
-      description="Jeśli zobaczysz coś co cię poruszy, a następnie złapiesz to na zdjęciu, to zwyczajnie zatrzymasz ten moment na wieki."
+      description="Love Stories to coś więcej niż śluby. To także historie o miłości do siebie, do swojej rodziny, a czasem do pasji, natury, lub - po prostu życia."
       image="stories.jpg"
     />
     <section class="content__container">
